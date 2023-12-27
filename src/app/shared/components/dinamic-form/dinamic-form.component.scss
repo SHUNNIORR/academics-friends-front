@@ -1,0 +1,43 @@
+@import '../../../../variables';
+
+.container {
+    width: 400px;
+}
+
+.form {
+    &__field {
+        width: 100%;
+    }
+
+    &__button-container {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+
+        &--button {
+            width: 200px;
+            height: 40px;
+            border-radius: 20px;
+            background-color: $red;
+            color: $white;
+            font-family: 'Poppins', sans-serif;
+            border: none;
+
+            &:disabled {
+                background-color: gray;
+                cursor: not-allowed;
+                color: rgb(202, 202, 202);
+                &:hover{
+                    box-shadow: none;
+                }
+            }
+
+            &:hover {
+                cursor: pointer;
+                -webkit-box-shadow: 10px 10px 8px -6px rgba(0,0,0,0.75);
+                -moz-box-shadow: 10px 10px 8px -6px rgba(0,0,0,0.75);
+                box-shadow: 10px 10px 8px -6px rgba(0,0,0,0.75);
+            }
+        }
+    }
+}

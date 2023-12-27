@@ -1,0 +1,66 @@
+<div class="container">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form">
+        <ng-container *ngFor="let field of formData.fields; let i = index">
+            <div [ngSwitch]="field.type" class="bc-row bc-justify-content-center">
+                <mat-form-field class="form__field" *ngSwitchCase="'text'">
+                    <mat-label>{{ field.label }}</mat-label>
+                    <input matInput [type]="field.type" [formControlName]="field.key" />
+                    <mat-error *ngIf="form.get(field.key)?.hasError('required') && form.get(field.key)?.touched">
+                        Este campo es obligatorio.
+                    </mat-error>
+                    <mat-error *ngIf="form.get(field.key)?.hasError('email') && form.get(field.key)?.touched">
+                        Formato incorrecto de correo
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="form__field" *ngSwitchCase="'number'">
+                    <mat-label>{{ field.label }}</mat-label>
+                    <input matInput [type]="field.type" [formControlName]="field.key" />
+                    <mat-error *ngIf="form.get(field.key)?.hasError('required') && form.get(field.key)?.touched">
+                        Este campo es obligatorio.
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="form__field" *ngSwitchCase="'password'">
+                    <mat-label>{{ field.label }}</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" [formControlName]="field.key" />
+                    <button mat-icon-button matSuffix (click)="togglePasswordVisibility($event)" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="form.get(field.key)?.hasError('required') && form.get(field.key)?.touched">
+                        Este campo es obligatorio.
+                    </mat-error>
+
+                </mat-form-field>
+                <mat-form-field class="form__field" *ngSwitchCase="'select'">
+                    <mat-label>{{ field.label }}</mat-label>
+                    <mat-select [formControlName]="field.key">
+                        <ng-container *ngFor="let item of field.selectOptions">
+                            <mat-option [value]="item.value">{{item.label}}</mat-option>
+                        </ng-container>
+                    </mat-select>
+                    <mat-error *ngIf="form.get(field.key)?.hasError('required') && form.get(field.key)?.touched">
+                        Este campo es obligatorio.
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="form__field" *ngSwitchCase="'file'">
+                    <ngx-mat-file-input
+                        [accept]="field.filesAccepted?field.filesAccepted:'.csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel'"
+                        [formControlName]="field.key" [placeholder]="field.label"></ngx-mat-file-input>
+                </mat-form-field>
+                <mat-form-field class="form__field" *ngSwitchCase="'date'">
+                    <mat-label>{{ field.label }}</mat-label>
+                    <input matInput [matDatepicker]="picker" [max]="currentDate" [formControlName]="field.key" />
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-error *ngIf="form.get(field.key)?.hasError('required') && form.get(field.key)?.touched">
+                        Este campo es obligatorio.
+                    </mat-error>
+                </mat-form-field>
+            </div>
+        </ng-container>
+        <div class="form__button-container">
+            <button class="form__button-container--button" type="submit"
+                [disabled]="form.invalid">{{formData.buttonLabel}}</button>
+        </div>
+    </form>
+</div>

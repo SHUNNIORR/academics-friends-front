@@ -1,0 +1,25 @@
+<mat-drawer-container class="example-container" autosize [hasBackdrop]="esDispositivoMovil?true:false">
+  <mat-drawer class="drawer" #sidenav opened="true" [mode]="esDispositivoMovil?'over':'side'" position="start">
+    <mat-nav-list>
+      <div class="user-card">
+        <h3>{{userName}}</h3>
+        <p>{{email}}</p>
+      </div>
+      <div *ngFor="let item of SIDEBAR_LINKS">
+        <mat-expansion-panel *ngIf="item.type=='multi'" [class.mat-elevation-z0]="true">
+          <mat-expansion-panel-header ><mat-icon class="mat-icon">{{item.icon}}</mat-icon> {{item.moduleName}} </mat-expansion-panel-header>
+          
+          <mat-nav-list>
+            <div *ngFor="let view of item.views">
+              <a mat-list-item [routerLink]="view.link"  routerLinkActive="active-link" >{{view.viewName}}</a>
+            </div>
+          </mat-nav-list>
+        </mat-expansion-panel>
+        <a *ngIf="item.type=='simple'" mat-list-item [routerLink]="item.link"  routerLinkActive="active-link" ><mat-icon class="mat-icon">{{item.icon}}</mat-icon>{{item.moduleName}}</a>
+      </div>
+    </mat-nav-list>
+  </mat-drawer>
+  <mat-drawer-content class="drawer-content-container">
+    <router-outlet  class="router-content-container"> </router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

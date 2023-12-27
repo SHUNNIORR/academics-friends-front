@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { display: flex; flex-direction: column;height:100% ;}
+body { margin: 0; font-family: 'Poppins', sans-serif; }
+.root{
+    height: 100%;
+    overflow: hidden;
+}
+// .drawer-content-container :nth-child(2) {
+//     width: 100%;
+// }
+// app-home{
+//     width: 100%;
+//   }

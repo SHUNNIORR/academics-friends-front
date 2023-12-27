@@ -1,0 +1,49 @@
+@import "../../../../variables";
+.card {
+    margin: 10px;
+
+    &__body {
+        width: 15rem;
+        height: 10rem;
+        border-radius: 30px;
+        -webkit-box-shadow: 2px 2px 6px -2px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 2px 2px 6px -2px rgba(0, 0, 0, 0.75);
+        box-shadow: 2px 2px 6px -2px rgba(0, 0, 0, 0.75);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        &__top{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 60%;
+            width: 100%;
+            background-color: #e0e0e0;
+            border-radius: 30px 30px 0 0;
+            
+
+            &__value{
+                font-size: 2rem;
+                margin: 0;
+            }
+        }
+        &__bottom{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            flex-wrap: wrap;
+            color: $white;
+            height: 40%;
+            min-height: 40%;
+            width: 15rem;
+            max-width: 100%;
+            background-color: $red;
+            border-radius: 0 0 30px 30px;
+            box-sizing: border-box;
+            padding: 10px;
+            text-overflow: ellipsis;
+        }
+    }
+}

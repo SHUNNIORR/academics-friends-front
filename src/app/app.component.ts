@@ -1,10 +1,28 @@
 import { Component } from '@angular/core';
+import { AuthService } from './core/services/auth/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title = 'amigos-academicos-front';
+  isAuthenticated = false;
+
+  constructor(private authService: AuthService, private router: Router) {}
+
+  ngOnInit() {
+    // this.authService.isAuthenticated
+    //   ? this.router.navigate(['/dashboard'])
+    //   : this.router.navigate(['/login']);
+    this.authService.getHealth().subscribe({
+      next: (result) => {
+        console.log(result);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
 }

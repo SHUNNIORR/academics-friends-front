@@ -1,0 +1,30 @@
+<section class="container">
+    <div class="container__forms">
+        <div class="container__forms__content">
+            <h2>Cargar estudiantes</h2>
+            <app-dinamic-form [formData]="uploadStudents" (formSubmit)="onFormSubmit($event)"></app-dinamic-form>
+        </div>
+        <div class="container__forms__content">
+            <h2>Buscar estudiantes por código</h2>
+            <app-dinamic-form [formData]="searchStudent" (formSubmit)="onSearchStudent($event)"></app-dinamic-form>
+        </div>
+    </div>
+    <div *ngIf="studentInfo" class="container__studentList">
+        <div class="container__forms__content">
+            <div class="container__studentList__card">
+                <img src="../../../assets/student-icon.png" width="100px" height="100px">
+                <div class="container__studentList__card__info">
+                    <div class="container__studentList__card__info--content">
+                        <p><b>Nombre:</b><br>{{studentInfo.name}}</p>
+                        <p><b>Correo:</b><br>{{studentInfo.email}}</p>
+                        <p><b>Código:</b><br>{{studentInfo.code}}</p>
+                    </div>
+                    <div class="container__studentList__card__info--content">
+                        <p><b>Semestre:</b><br>{{studentInfo.semester}}</p>
+                        <p><b>Tipo:</b><br>{{studentInfo.type}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,17 @@
+.menu-items-container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.logo-name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+.mat-toolbar{
+    background: rgb(251,8,8);
+    background: linear-gradient(205deg, rgba(251,8,8,1) 0%, rgba(198,40,40,1) 48%, rgba(92,19,19,1) 100%);
+        
+}
