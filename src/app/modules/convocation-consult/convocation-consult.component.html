@@ -1,0 +1,7 @@
+<section class="container">
+    <div class="content">
+        <h2>Convocatoria activa:</h2>
+        <app-dinamic-table *ngIf="tableData.length>0" [data]="tableData" [columnsConfig]="columnNames" [hasPaginator]="false"></app-dinamic-table>
+        <h2>Estudiantes registrados</h2>
+    </div>
+</section>

@@ -56,10 +56,30 @@
                         Este campo es obligatorio.
                     </mat-error>
                 </mat-form-field>
+                <mat-form-field class="form__field" *ngSwitchCase="'date-range'">
+                    <mat-label>{{ field.label }}</mat-label>
+                    <mat-date-range-input [formGroup]="dateRange" [rangePicker]="picker">
+                      <input matStartDate formControlName="start" placeholder="Inicio" required>
+                      <input matEndDate formControlName="end" placeholder="Fin" required>
+                    </mat-date-range-input>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-date-range-picker #picker></mat-date-range-picker>
+                </mat-form-field>
+                <mat-form-field class="form__field" *ngSwitchCase="'date-time'">
+                    <input matInput [ngxMatDatetimePicker]="picker" placeholder="Escoge una fecha"  [formControlName]="field.key">
+                 <mat-datepicker-toggle matSuffix [for]="$any(picker)"></mat-datepicker-toggle>
+                 <ngx-mat-datetime-picker #picker [showSpinners]="false" 
+                     [color]="color"  >
+                 </ngx-mat-datetime-picker>
+                 <mat-label>{{ field.label }}</mat-label>
+                 <!-- <input matInput type="datetime-local" [formControlName]="field.key" /> -->
+                </mat-form-field>
             </div>
         </ng-container>
         <div class="form__button-container">
-            <button class="form__button-container--button" type="submit"
+            <button *ngIf="itsDateRange" class="form__button-container--button" type="submit"
+                [disabled]="form.invalid || dateRange.invalid">{{formData.buttonLabel}}</button>
+            <button *ngIf="!itsDateRange" class="form__button-container--button" type="submit"
                 [disabled]="form.invalid">{{formData.buttonLabel}}</button>
         </div>
     </form>

@@ -16,7 +16,7 @@ export class HeaderComponent {
   }
 
   logout(){
-    this.authService.deleteTokenFromLocal();
+    this.authService.logout();
     this.router.navigate(['/login']);
   }
 }

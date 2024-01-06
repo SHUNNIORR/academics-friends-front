@@ -11,8 +11,16 @@ import { NgxMatFileInputModule } from '@angular-material-components/file-input';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MAT_DATE_LOCALE } from '@angular/material/core';
 import {MatNativeDateModule} from '@angular/material/core';
+import { NgxMatDatetimePickerModule,NgxMatTimepickerModule,NgxMatNativeDateModule} from '@angular-material-components/datetime-picker';
+import { DinamicTableComponent } from './components/dinamic-table/dinamic-table.component';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatTableModule} from '@angular/material/table';
+import { ReportCardComponent } from './components/report-card/report-card.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { DinamicDialogComponent } from './components/dinamic-dialog/dinamic-dialog.component';
+
 @NgModule({
-  declarations: [DinamicFormComponent],
+  declarations: [DinamicFormComponent, DinamicTableComponent, ReportCardComponent, DinamicDialogComponent],
   imports: [
     ReactiveFormsModule,
     MatFormFieldModule,
@@ -23,11 +31,18 @@ import {MatNativeDateModule} from '@angular/material/core';
     MatSelectModule,
     NgxMatFileInputModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule,
+    NgxMatNativeDateModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatDialogModule
   ],
-  exports: [DinamicFormComponent],
+  exports: [DinamicFormComponent, DinamicTableComponent, ReportCardComponent],
   providers:[
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
+    MatDatepickerModule
   ]
 })
 export class SharedModule {}

@@ -30,6 +30,7 @@ export class AuthInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401 || error.status === 403) {
           // Unauthorized or Forbidden error handling
+          this.authService.logout();
           this.router.navigate(['/login']);
         }
         return throwError(error);

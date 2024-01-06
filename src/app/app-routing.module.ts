@@ -10,6 +10,11 @@ import { UploadStudentsComponent } from './modules/upload-students/upload-studen
 import { RegisterCoordinatorComponent } from './modules/register-coordinator/register-coordinator.component';
 import { UploadCoursesComponent } from './modules/upload-courses/upload-courses.component';
 import { EnrollmentAcademicFriendComponent } from './modules/enrollment-academic-friend/enrollment-academic-friend.component';
+import { AcademicFriendsComponent } from './modules/academic-friends/academic-friends.component';
+import { ConvocationCreateComponent } from './modules/convocation-create/convocation-create.component';
+import { ConsultancySaveComponent } from './modules/consultancy-save/consultancy-save.component';
+import { ConsultancyListComponent } from './modules/consultancy-list/consultancy-list.component';
+import { ConvocationConsultComponent } from './modules/convocation-consult/convocation-consult.component';
 
 const routes: Routes = [
   { path:'', redirectTo:'/login', pathMatch:'full'},
@@ -23,8 +28,11 @@ const routes: Routes = [
       { path: 'cargar-estudiantes',  component: UploadStudentsComponent, canActivate:[authGuardGuard]},
       { path: 'registro-coordinadores',  component: RegisterCoordinatorComponent, canActivate:[authGuardGuard]},
       { path: 'cargar-cursos',  component: UploadCoursesComponent, canActivate:[authGuardGuard]},
-      { path: 'asesorias/listar',  component: HomeComponent, canActivate:[authGuardGuard]},
-      { path: 'asesorias/registrar',  component: HomeComponent, canActivate:[authGuardGuard]}
+      { path: 'asesorias/listar',  component: ConsultancyListComponent, canActivate:[authGuardGuard]},
+      { path: 'asesorias/registrar',  component: ConsultancySaveComponent, canActivate:[authGuardGuard]},
+      { path: 'convocatoria-crear',  component: ConvocationCreateComponent, canActivate:[authGuardGuard]},
+      { path: 'convocatoria-consultar',  component: ConvocationConsultComponent, canActivate:[authGuardGuard]},
+      { path: 'amigos-academicos',  component: AcademicFriendsComponent, canActivate:[authGuardGuard]}
     ]
   },
   { path: '**', component: PageNotFoundComponent }

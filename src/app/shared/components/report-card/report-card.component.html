@@ -1,0 +1,46 @@
+<div class="report-card">
+    <div class="grid-container">
+        <div class="grid-item">
+            <b>Id:</b><br>{{data?.id}}
+        </div>
+        <div class="grid-item"><b>Correo:</b><br> {{data?.academicFriendEmail}}</div>
+        <div class="grid-item">
+           <b>Fecha del informe:</b><br>{{ data?.date | date:'yyyy-MM-dd HH:mm' }}
+        </div>
+
+        <div class="grid-item descargar">  <button class="download-button" (click)="downloadReport(data!.file)"><b>Descargar informe</b></button></div>
+
+        <div class="grid-item"><b>Tipo: </b><br>
+            <ng-container [ngSwitch]="data?.type">
+                <b *ngSwitchCase="'monthly'">Mensual</b>
+                <b *ngSwitchCase="'final'">Final</b>
+            </ng-container>
+        </div>
+        <div class="grid-item">
+            <b>Fecha de carga:</b><br> {{data?.uploadDate | date:'yyyy-MM-dd HH:mm'}}
+        </div>
+
+        <div class="grid-item"><b>Estado: </b><br>
+            <ng-container [ngSwitch]="data?.state">
+                <b *ngSwitchCase="'withCorrections'">Corregir ✏️</b>
+                <b *ngSwitchCase="'pass'">Aprobado &#9989;</b>
+                <b *ngSwitchCase="'rejected'">Rechazado &#10060;</b>
+                <b *ngSwitchCase="'pending'">Pendiente &#8987;</b>
+            </ng-container>
+        </div>
+
+        <div class="grid-item full-width">
+                <b>Observaciones:</b> <br> {{data?.observations}}
+        </div>
+
+        <!-- Nueva columna con dos elementos -->
+        <div class="grid-item">
+            <ng-container *ngIf="coordinator">
+                <b>Calificar</b>
+            </ng-container>
+            <ng-container *ngIf="!coordinator && data?.state=='withCorrections'">
+                <button mat-button (click)="openDialogCorrectReport(data!.id)"><b>Corregir informe</b></button>
+            </ng-container>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+<section class="container">
+    <div class="content">
+        <h2>Mis asesorías</h2>
+        <app-dinamic-table *ngIf="tableData.length>0;else elseBlock" [data]="tableData" [columnsConfig]="columnNames"></app-dinamic-table>
+        <ng-template #elseBlock>
+            <p>Oops, parece que no tienes ninguna asesoría registrada</p>
+        </ng-template>
+    </div>
+</section>

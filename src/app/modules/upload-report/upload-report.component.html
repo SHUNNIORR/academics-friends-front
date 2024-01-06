@@ -1,6 +1,26 @@
 <section class="container">
-    <div class="content">
-        <h2>Cargar informe de asesorias</h2>
-        <app-dinamic-form [formData]="formConfig" (formSubmit)="onFormSubmit($event)"></app-dinamic-form>
-    </div>
+    <mat-tab-group>
+        <mat-tab label="Cargar informes"> 
+            <section class="container">
+                <div class="content">
+                    <h2>Cargar informe de asesorias</h2>
+                    <app-dinamic-form [formData]="formConfig" (formSubmit)="onFormSubmit($event)"></app-dinamic-form>
+                </div>
+            </section>
+        </mat-tab>
+        <mat-tab label="Mis informes"> 
+            <section class="container">
+                <div class="content">
+                    <h2>Mis informes</h2>
+                    <ng-container *ngIf="reports">
+                        <ng-container  *ngFor="let report of reports">
+                            <app-report-card [data]="report" [coordinator]="false"></app-report-card>
+                        </ng-container>
+                    </ng-container>
+                </div>
+            </section>
+        </mat-tab>
+    </mat-tab-group>
+    
+    
 </section>

@@ -1,3 +1,5 @@
+import { FormControl, FormGroup } from "@angular/forms";
+
 // dynamic-form.model.ts
 export interface DynamicFormField {
     key: string;
@@ -8,6 +10,9 @@ export interface DynamicFormField {
     validations?: any[];
     selectOptions?:selectOption[];
     filesAccepted?: string;
+    dateRange?: FormGroup;
+    startDateName?: FormControl;
+    endDateName?: FormControl;
   }
 
   interface selectOption{
@@ -18,4 +23,11 @@ export interface DynamicFormField {
   export interface DynamicFormData {
     fields: DynamicFormField[],
     buttonLabel: string;
+  }
+
+  export function buildDateRangeFormGroup(startDateName: string, endDateName: string): FormGroup {
+    return new FormGroup({
+      start: new FormControl(startDateName),
+      end: new FormControl(endDateName),
+    });
   }

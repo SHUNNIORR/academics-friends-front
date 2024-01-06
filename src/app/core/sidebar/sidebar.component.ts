@@ -16,7 +16,7 @@ export class SidebarComponent {
   constructor(
     private coreService: CoreService,
     private breakpointObserver: BreakpointObserver,
-    private authService: AuthService
+    public authService: AuthService
   ) {
     
   }
@@ -35,15 +35,5 @@ export class SidebarComponent {
     this.coreService.sidenavToggle$.subscribe(() => {
       this.sidenav.toggle();
     });
-    // this.authService.getUserByEmail(this.email).subscribe({
-    //   next: (res: any) => {
-    //     this.userName = res.name;
-    //     this.email = res.email;
-    //     this.coreService.email = res.email;
-    //     this.coreService.userName = res.name;
-    //   },
-    //   error: () => {
-    //   },
-    // });
   }
 }

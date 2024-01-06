@@ -44,7 +44,9 @@ mat-expansion-panel-header{
 app-home{
   width: 100%;
 }
+.drawer{
 
+}
 .user-card{
   display: flex;
   flex-direction: column;
@@ -62,4 +64,11 @@ app-home{
   margin: 0 20px;
   padding: 0;
   width: auto;
+}
+.credits-container{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
 }

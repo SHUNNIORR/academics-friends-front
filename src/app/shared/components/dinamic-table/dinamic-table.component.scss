@@ -1,0 +1,25 @@
+.mat-elevation-z8{
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    text-align: left;
+  }
+  td{
+    border-right: 1px solid rgba(0, 0, 0, 0.12);
+  }
+  th {
+    background-color: #ab2323 !important;
+    color: white;
+    border-right: 1px solid rgba(171, 35, 35, 0.799);
+  }
+
+  thead{
+    background-color: #ab2323;
+  }
+  mat-paginator{
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+  }

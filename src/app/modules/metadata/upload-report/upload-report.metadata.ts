@@ -10,7 +10,7 @@ export const CREATE_REPORT: DynamicFormData = {
       required: true,
       validations: [Validators.required],
       selectOptions: [
-        { value: 'montly', label: 'Mensual' },
+        { value: 'monthly', label: 'Mensual' },
         { value: 'final', label: 'Final' },
       ],
     },
@@ -18,11 +18,11 @@ export const CREATE_REPORT: DynamicFormData = {
       key: 'file',
       label: 'Subir archivo de informe',
       type: 'file',
-      filesAccepted:'.csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel',
+      filesAccepted:'application/pdf, .pdf',
       validations: [Validators.required],
     },
     {
-      key: 'dateReport',
+      key: 'date',
       label: 'Fecha de informe',
       type: 'date',
       required: true,
@@ -31,3 +31,25 @@ export const CREATE_REPORT: DynamicFormData = {
   ],
   buttonLabel: 'Cargar reporte',
 };
+export const UPDATE_REPORT_AACA: DynamicFormData = {
+  fields: [
+    {
+      key: 'file',
+      label: 'Subir archivo de informe',
+      type: 'file',
+      filesAccepted:'application/pdf, .pdf',
+      validations: [Validators.required],
+    },
+  ],
+  buttonLabel: 'Corregir informe',
+};
+export interface ReportResponse {
+  id:                  number;
+  academicFriendEmail: string;
+  type:                string;
+  observations:        null;
+  state:               string;
+  date:                Date;
+  uploadDate:          Date;
+  file:                string;
+}
