@@ -12,6 +12,7 @@ export class ConsultancyListComponent {
   tableData:any[] = [];
   columnNames:any[] = TABLE_COLUMNS_NAME_CONSULTANCY;
   email = localStorage.getItem('email');
+ 
   constructor(private coreService:CoreService,private consultancyService: ConsultancyService){
 
   }

@@ -1,6 +1,31 @@
 <section class="container">
-    <div class="content">
-        <h2>Buscar amigo académico</h2>
-        <app-dinamic-form [formData]="searchAcademicFriend" (formSubmit)="onFormSubmit($event)"></app-dinamic-form>
-    </div>
+    <mat-tab-group>
+        <mat-tab label="Asesorias por amigo académico"> 
+            <section class="container">
+                <div class="content">
+                    <h2>Buscar asesorias por amigo académico</h2>
+                    <app-dinamic-form [formData]="searchAcademicFriendByEmail" (formSubmit)="getConsultancyByAf($event)"></app-dinamic-form>
+                    <app-dinamic-table *ngIf="consultancyByAFtableData.length>0" [data]="consultancyByAFtableData" [columnsConfig]="consultancyByAFcolumnNames"></app-dinamic-table>
+                </div>
+            </section>
+        </mat-tab>
+        <mat-tab label="Buscar amigo académico"> 
+            <section class="container">
+                <div class="content">
+                    <h2>Buscar amigo académico</h2>
+                    <app-dinamic-form [formData]="searchAcademicFriend" (formSubmit)="getAfInfo($event)"></app-dinamic-form>
+                    <app-dinamic-table *ngIf="findAFByCodetableData.length>0" [hasPaginator]="false" [data]="findAFByCodetableData" [columnsConfig]="findAFByCodecolumnNames"></app-dinamic-table>
+                </div>
+            </section>
+        </mat-tab>
+        <mat-tab label="Lista de amigos académicos"> 
+            <section class="container">
+                <div class="content">
+                    <h2>Buscar amigo académico</h2>
+                    <app-dinamic-form [formData]="searchAcademicFriend" (formSubmit)="getAfInfo($event)"></app-dinamic-form>
+                </div>
+            </section>
+        </mat-tab>
+    </mat-tab-group>
+    
 </section>

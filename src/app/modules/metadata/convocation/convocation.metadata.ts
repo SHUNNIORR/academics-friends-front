@@ -50,9 +50,48 @@ export const TABLE_COLUMNS_NAME_CONVOCATION = [
 ];
 
 export const TABLE_COLUMNS_NAME_STUDENTS = [
-  { label: 'Id', key: 'id' },
-  { label: 'Fecha de apertura', key: 'openingDate' },
-  { label: 'Fecha de cierre', key: 'closingDate' },
-  { label: 'Fecha de evaluación', key: 'evaluationDate' },
-  { label: 'Fecha de entrega de resultados', key: 'resultsReleaseDate' },
+  { label: 'Correo', key: 'email' },
+  { label: 'Nombre', key: 'name' },
+  { label: 'Código', key: 'code' },
+  //{ label: 'Tipo', key: 'type' },
+  { label: 'Semestre', key: 'semester' },
+  //{ label: 'Estado', key: 'status' },
+  //{ label: 'Hoja de vida', key: 'resume' },
+  { label: 'Calificación', key: 'score' },
+  { label: 'Promedio', key: 'average' },
+  { label: 'Obervaciones', key: 'observations' },
+  //{ label: 'Contrato', key: 'contract' }
 ];
+
+export const optionsTableStudentRegistered = [
+  {
+    id:"downloadHV",
+    label:"Descargar HV"
+  },
+  {
+    id:"downloadContract",
+    label:"Descargar contrato"
+  },
+  {
+    id:"qualify",
+    label:"Calificar"
+  },
+]
+
+export const QUALIFY_STUDENT: DynamicFormData = {
+  fields: [
+    {
+      key: 'score',
+      label: 'Califición percibida',
+      type: 'number',
+      validations: [Validators.required,Validators.pattern(/^(100|[1-9]?\d)$/)],
+    },
+    {
+      key: 'observations',
+      label: 'Observaciones',
+      type: 'text',
+      validations: [Validators.required],
+    },
+  ],
+  buttonLabel: 'Calificar',
+};

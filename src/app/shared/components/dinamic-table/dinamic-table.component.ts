@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -11,11 +11,13 @@ export class DinamicTableComponent {
   @Input() data: any[] = [];
   @Input() columnsConfig: { label: string; key: string }[] = [];
   @Input() hasPaginator:boolean = true;
+  @Input() hasOptions:boolean = false;
+  @Input() optionsData: any[] = [];
   displayedColumns: string[] = [];
   dataSource!: MatTableDataSource<any>;
   pageSizeOptions: number[] = [5, 10, 25, 100];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-
+  @Output() optionsButtonClick = new EventEmitter<any>();
   get columnKeys(): string[] {
     return this.columnsConfig.map((column) => column.key);
   }
@@ -27,5 +29,8 @@ export class DinamicTableComponent {
       this.dataSource.paginator = this.paginator;
     }
   }
-
+  emitOptionsEvent(id:string,element: any) {
+    const emitObj= {id:id,element:element}
+    this.optionsButtonClick.emit(emitObj);
+  }
 }

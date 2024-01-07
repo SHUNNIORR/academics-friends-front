@@ -3,5 +3,9 @@
         <h2>Convocatoria activa:</h2>
         <app-dinamic-table *ngIf="tableData.length>0" [data]="tableData" [columnsConfig]="columnNames" [hasPaginator]="false"></app-dinamic-table>
         <h2>Estudiantes registrados</h2>
+        <app-dinamic-table *ngIf="studentsTableData.length>0;else elseBlock" [data]="studentsTableData" [hasOptions]="true" [optionsData]="optionsData" (optionsButtonClick)="handleCustomEvent($event)" [columnsConfig]="studentsRegisteredColumnNames"></app-dinamic-table>
+        <ng-template #elseBlock>
+            <p>No existen estudiantes registrados a la convocatoria</p>
+        </ng-template>
     </div>
 </section>

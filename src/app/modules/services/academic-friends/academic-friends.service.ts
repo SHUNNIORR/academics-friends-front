@@ -9,7 +9,18 @@ export class AcademicFriendsService {
   readonly API_URL: string = environment.url
   constructor(private http:HttpClient) { 
   }
+  getAllAcademicFriends(){
+    return this.http.get(`${this.API_URL}/academic-friend`)
+  }
   getAcademicFriendByConvocationActive(id:number){
     return this.http.get(`${this.API_URL}/academic-friend/find-by-convocation/${id}`)
+  }
+
+  updateAcademicFriend(academicFriendObj:any){
+    return this.http.put(`${this.API_URL}/academic-friend`,academicFriendObj)
+  } 
+
+  findAcademicFriendByCode(academicFriendCode:number){
+    return this.http.get(`${this.API_URL}/academic-friend/${academicFriendCode}`)
   }
 }

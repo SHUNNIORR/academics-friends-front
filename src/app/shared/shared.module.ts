@@ -18,9 +18,10 @@ import {MatTableModule} from '@angular/material/table';
 import { ReportCardComponent } from './components/report-card/report-card.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { DinamicDialogComponent } from './components/dinamic-dialog/dinamic-dialog.component';
-
+import { AcademicFriendCardComponent } from './components/academic-friend-card/academic-friend-card.component';
+import {MatMenuModule} from '@angular/material/menu';
 @NgModule({
-  declarations: [DinamicFormComponent, DinamicTableComponent, ReportCardComponent, DinamicDialogComponent],
+  declarations: [DinamicFormComponent, DinamicTableComponent, ReportCardComponent, DinamicDialogComponent, AcademicFriendCardComponent],
   imports: [
     ReactiveFormsModule,
     MatFormFieldModule,
@@ -37,9 +38,10 @@ import { DinamicDialogComponent } from './components/dinamic-dialog/dinamic-dial
     NgxMatNativeDateModule,
     MatPaginatorModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    MatMenuModule
   ],
-  exports: [DinamicFormComponent, DinamicTableComponent, ReportCardComponent],
+  exports: [DinamicFormComponent, DinamicTableComponent, ReportCardComponent, AcademicFriendCardComponent],
   providers:[
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
     MatDatepickerModule

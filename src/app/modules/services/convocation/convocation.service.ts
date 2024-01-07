@@ -18,4 +18,5 @@ export class ConvocationService {
   getConvocationActive(){
     return this.http.get(`${this.API_URL}/convocation/active`)
   }
+
 }
