@@ -69,15 +69,34 @@ export const optionsTableStudentRegistered = [
     label:"Descargar HV"
   },
   {
-    id:"downloadContract",
-    label:"Descargar contrato"
-  },
-  {
     id:"qualify",
     label:"Calificar"
   },
 ]
-
+export const optionsTableStudentPass = [
+  {
+    id:"downloadHV",
+    label:"Descargar HV"
+  },
+  {
+    id:"downloadContract",
+    label:"Descargar contrato"
+  },
+  {
+    id:"uploadContract",
+    label:"Cargar contrato"
+  }
+]
+export const optionsTableStudentApprove = [
+  {
+    id:"downloadHV",
+    label:"Descargar HV"
+  },
+  {
+    id:"approve",
+    label:"Aprobar"
+  },
+]
 export const QUALIFY_STUDENT: DynamicFormData = {
   fields: [
     {
@@ -94,4 +113,16 @@ export const QUALIFY_STUDENT: DynamicFormData = {
     },
   ],
   buttonLabel: 'Calificar',
+};
+export const APPROVE_STUDENT: DynamicFormData = {
+  fields: [
+    {
+      key: 'password',
+      label: 'Contraseña',
+      type: 'password',
+      required: true,
+      validations: [Validators.minLength(6)],
+    },
+  ],
+  buttonLabel: 'Aprobar',
 };

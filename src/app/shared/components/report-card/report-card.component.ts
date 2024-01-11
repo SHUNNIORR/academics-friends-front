@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CoreService } from 'src/app/core/services/core/core.service';
-import { CREATE_REPORT, ReportResponse, UPDATE_REPORT_AACA } from 'src/app/modules/metadata/upload-report/upload-report.metadata';
+import { CREATE_REPORT, QUALIFY_REPORT_AACA, ReportResponse, UPDATE_REPORT_AACA } from 'src/app/modules/metadata/upload-report/upload-report.metadata';
 import { FileService } from 'src/app/modules/services/file/file.service';
 import { DinamicDialogComponent } from '../dinamic-dialog/dinamic-dialog.component';
 import { DinamicFormComponent } from '../dinamic-form/dinamic-form.component';
@@ -52,13 +52,36 @@ export class ReportCardComponent {
       });
   }
 
+  openDialogQualifyReport(reportId:number){
+    const formData = QUALIFY_REPORT_AACA
+    this.dialogService.openDynamicDialog('Calificar informe de asesorias', formData)
+      .afterClosed()
+      .subscribe((res:any) => {
+        const objToQualify={
+          id: reportId,
+          ...res
+        }
+        console.log(objToQualify)
+        this.qualifyReportService(objToQualify);
+      });
+  }
+  qualifyReportService(reportObj:any){
+    this.reportService.updateReport(reportObj).subscribe({
+      next: (res:any) => {
+        this.coreService.showMessage('Reporte Calificado correctamente!');
+      },
+      error:(err:any)=>{
+        this.coreService.showMessage('Hubo un error calificando el reporte:'+ err.error.message);
+      }
+    })
+  }
   correctReportService(reportId:number, file:File){
     this.reportService.correctReport(reportId,file).subscribe({
       next: (res:any) => {
         this.coreService.showMessage('Reporte corregido correctamente!');
       },
-      error:(err:Error)=>{
-        this.coreService.showMessage('Hubo un error actualizando el reporte:'+ err.message);
+      error:(err:any)=>{
+        this.coreService.showMessage('Hubo un error actualizando el reporte:'+ err.error.message);
       }
     })
   }

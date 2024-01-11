@@ -1,0 +1,9 @@
+<section class="container">
+    <div class="content">
+        <h2>Aprobar estudiantes registrados</h2>
+        <app-dinamic-table *ngIf="studentsTableData.length>0;else elseBlock" [data]="studentsTableData" [hasOptions]="true" [optionsData]="optionsData" (optionsButtonClick)="handleCustomEvent($event)" [columnsConfig]="studentsRegisteredColumnNames"></app-dinamic-table>
+        <ng-template #elseBlock>
+            <p>No existen estudiantes registrados a la convocatoria</p>
+        </ng-template>
+    </div>
+</section>

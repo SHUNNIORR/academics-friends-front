@@ -14,6 +14,10 @@ import { ConsultancySaveComponent } from './consultancy-save/consultancy-save.co
 import { ConsultancyListComponent } from './consultancy-list/consultancy-list.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import { ConvocationConsultComponent } from './convocation-consult/convocation-consult.component';
+import { ReviewReportComponent } from './review-report/review-report.component';
+import { ConvocationApprovalsComponent } from './convocation-approvals/convocation-approvals.component';
+import { StatsComponent } from './stats/stats.component';
+import { ScheduleAssignmentComponent } from './schedule-assignment/schedule-assignment.component';
 @NgModule({
   declarations: [
     UploadReportComponent,
@@ -26,6 +30,10 @@ import { ConvocationConsultComponent } from './convocation-consult/convocation-c
     ConsultancySaveComponent,
     ConsultancyListComponent,
     ConvocationConsultComponent,
+    ReviewReportComponent,
+    ConvocationApprovalsComponent,
+    StatsComponent,
+    ScheduleAssignmentComponent,
   ],
   imports: [
     CommonModule,

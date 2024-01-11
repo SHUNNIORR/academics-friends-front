@@ -21,8 +21,8 @@
         <mat-tab label="Lista de amigos académicos"> 
             <section class="container">
                 <div class="content">
-                    <h2>Buscar amigo académico</h2>
-                    <app-dinamic-form [formData]="searchAcademicFriend" (formSubmit)="getAfInfo($event)"></app-dinamic-form>
+                    <h2>Listado de amigos académicos</h2>
+                    <app-dinamic-table *ngIf="allAftableData.length>0"  [data]="allAftableData" [columnsConfig]="allAfcolumnNames" [hasOptions]="true" [optionsData]="optionsData" (optionsButtonClick)="handleCustomEvent($event)"></app-dinamic-table>
                 </div>
             </section>
         </mat-tab>

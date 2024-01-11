@@ -13,6 +13,7 @@ export class SidebarComponent {
   esDispositivoMovil: boolean = false;
   @ViewChild('sidenav') sidenav!: MatSidenav;
   SIDEBAR_LINKS: any = SIDEBAR_LINKS;
+  role: string |null = localStorage.getItem('role') == 'academicFriend'? 'Amigo académico': localStorage.getItem('role') == 'coordinator'?'Coordinador':localStorage.getItem('role') == 'director'?'Director':'';
   constructor(
     private coreService: CoreService,
     private breakpointObserver: BreakpointObserver,

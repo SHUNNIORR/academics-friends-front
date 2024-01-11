@@ -12,4 +12,7 @@ export class FileService {
   downloadFile(fileUrl: string){
     return this.http.get(`${this.API_URL}/file/${fileUrl}`,{ responseType: 'blob' })
   }
+  convertFile(fileArray:any){
+    return this.http.post(`${this.API_URL}/file/convert`,fileArray,{ responseType: 'blob' })
+  }
 }

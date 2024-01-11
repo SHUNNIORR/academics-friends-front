@@ -23,4 +23,11 @@ export class AcademicFriendsService {
   findAcademicFriendByCode(academicFriendCode:number){
     return this.http.get(`${this.API_URL}/academic-friend/${academicFriendCode}`)
   }
+
+  uploadContract(file:File, email:string){
+    let formParams = new FormData();
+    formParams.append('contract', file)
+    formParams.append('email', email)
+    return this.http.put(`${this.API_URL}/academic-friend/contract`,formParams)
+  }
 }

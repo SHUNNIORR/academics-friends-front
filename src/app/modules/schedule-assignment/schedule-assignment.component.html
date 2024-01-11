@@ -1,0 +1,30 @@
+<section class="container">
+    <mat-tab-group *ngIf="isCoordinator">
+        <mat-tab label="Asignar horario"> 
+            <section class="container">
+                <div class="content">
+                    <h2>Buscar asesorias por amigo académico</h2>
+                    <app-dinamic-form [formData]="assignScheduleForm" (formSubmit)="saveSchedule($event)"></app-dinamic-form>
+                </div>
+            </section>
+        </mat-tab>
+        <mat-tab label="Solicitudes de horario"> 
+            <section class="container">
+                <div class="content">
+                    <h2>Solicitudes de horarios</h2>
+                    <app-dinamic-table *ngIf="assignScheduleTableData.length>0;else elseBlockAssignment" [hasPaginator]="false" [data]="assignScheduleTableData" [columnsConfig]="assignScheduleColumnNames"></app-dinamic-table> 
+                </div>
+                <ng-template #elseBlockAssignment>
+                    <p>No existen asignaciones de horario</p>
+                </ng-template>
+            </section>
+        </mat-tab>
+    </mat-tab-group>
+    <div *ngIf="!isCoordinator" class="content">
+        <h2>Mis asignaciones de horario</h2>
+        <app-dinamic-table *ngIf="assignScheduleByEmailTableData.length>0; else elseBlock" [hasPaginator]="false" [data]="assignScheduleByEmailTableData" [columnsConfig]="assignScheduleColumnNames" (optionsButtonClick)="handleCustomEvent($event)" [hasOptions]="true" [optionsData]="optionsData"></app-dinamic-table> 
+        <ng-template #elseBlock>
+            <p>No existen asignaciones de horario asignadas a ti</p>
+        </ng-template>
+    </div>
+</section>

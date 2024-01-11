@@ -17,10 +17,19 @@ export class ReportService {
     return this.http.post(`${this.API_URL}/report`, saveReportObj)
   }
 
+  getAllReports(){
+    return this.http.get(`${this.API_URL}/report`)
+  } 
+
   getReportsByAcademicFriend(academicFriendEmail:string){
     return this.http.get(`${this.API_URL}/report/find-by-academic-friend/${academicFriendEmail}`)
   } 
-
+  updateReport(reportObj:any){
+    return this.http.put(`${this.API_URL}/report`,reportObj).pipe(
+      // Emitir una notificación de actualización cuando se completa la corrección del informe
+      tap(() => this.reportUpdated$.next())
+    );
+  }
   correctReport(reportId:number, file:File){
     const formData = new FormData();
         formData.append('file', file);

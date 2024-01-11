@@ -58,6 +58,7 @@ app-home{
   p,h3{
     margin: 0;
     text-overflow: ellipsis;
+    overflow-wrap: anywhere;
   }
 }
 .mat-mdc-list-item{
@@ -71,4 +72,8 @@ app-home{
   position: absolute;
   bottom: 0;
   width: 100%;
+}
+.role{
+  color: #A12121;
+  font-weight: bold;
 }

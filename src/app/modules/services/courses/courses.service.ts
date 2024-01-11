@@ -15,4 +15,7 @@ export class CoursesService {
     formParams.append('file', courses)
     return this.http.post(`${this.API_URL}/course`,formParams)
   }
+  getAllCourses(){
+    return this.http.get(`${this.API_URL}/course`)
+  }
 }

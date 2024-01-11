@@ -9,13 +9,13 @@ export const ENROLLMENT: DynamicFormData = {
       type: 'text',
       validations: [Validators.required, Validators.email],
     },
-    {
-      key: 'classSchedule',
-      label: 'Subir horario académico',
-      type: 'file',
-      filesAccepted: 'application/pdf, .pdf',
-      validations: [Validators.required],
-    },
+    // {
+    //   key: 'classSchedule',
+    //   label: 'Subir horario académico',
+    //   type: 'file',
+    //   filesAccepted: 'application/pdf, .pdf',
+    //   validations: [Validators.required],
+    // },
     {
       key: 'resume',
       label: 'Subir hoja de vida',

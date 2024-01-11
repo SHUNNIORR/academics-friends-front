@@ -1,0 +1,62 @@
+
+<section class="container">
+    <mat-tab-group (selectedIndexChange)="onTabChange($event)" >
+        <mat-tab label="Asesorias en el semestre" > 
+            <ng-template matTabContent>
+                <section class="container">
+                    <div class="content">
+                        <h2>Asesorias por cursos del semestre</h2>
+                        {{semester}}
+                        <div style="width: 800px;">
+                            <canvas id="consultancyXcourses"></canvas>
+                        </div>
+                        <app-dinamic-form [formData]="searchConsultanciesBySemester" (formSubmit)="getConsultanciesBySemester($event)"></app-dinamic-form>
+                        <div *ngIf="allConsultancyTableData.length>0" class="header-buttons">
+                            <button mat-button class="download-button" (click)="downloadConsultancies(allConsultancyDownloadObj, 'AsesoriasTablaAFUFPS')"><b>Descargar gráfico en excel</b></button>
+                            <button mat-button class="download-button" (click)="downloadConsultancies(allConsultancyTableData, 'AsesoriasTablaAFUFPS')"><b>Descargar tabla</b></button>
+                        </div>
+                        <app-dinamic-table *ngIf="allConsultancyTableData.length>0" [data]="allConsultancyTableData" [columnsConfig]="allConsultancyColumnNames"></app-dinamic-table> 
+                    </div>
+                </section>
+            </ng-template>
+        </mat-tab>
+        <mat-tab label="Asesorias por curso" > 
+            <ng-template matTabContent>
+                <section class="container">
+                    <div class="content">
+                        <h2>Asesorias por curso</h2>
+                        <app-dinamic-form [formData]="searchCourseByName" (formSubmit)="getConsultancyByCourse($event)"></app-dinamic-form>
+                        <p>{{courseName}}</p>
+                        <div *ngIf="dataxcourse.length>0"  style="width: 800px;">
+                            <canvas id="consultancyXcourse"></canvas>
+                        </div>
+                        <!-- <app-dinamic-table *ngIf="consultancyByAFtableData.length>0" [data]="consultancyByAFtableData" [columnsConfig]="consultancyByAFcolumnNames"></app-dinamic-table> -->
+                        <div *ngIf="dataxcourse.length>0" class="header-buttons">
+                            <button mat-button class="download-button" (click)="downloadConsultancies(allConsultancyXAFDownloadObj, 'AsesoriasTablaAFUFPS')"><b>Descargar gráfico en excel</b></button>
+                            <button mat-button class="download-button" (click)="downloadConsultancies(allConsultancyByCourseTableData, 'AsesoriasTablaAFUFPS')"><b>Descargar tabla</b></button>
+                        </div>
+                        <app-dinamic-table *ngIf="allConsultancyByCourseTableData.length>0" [data]="allConsultancyByCourseTableData" [columnsConfig]="allConsultancyByCourseColumnNames"></app-dinamic-table> 
+                    </div>
+                </section>
+            </ng-template>
+        </mat-tab>
+        <mat-tab label="Asesorias por amigo académico"> 
+            <ng-template matTabContent>
+                <section class="container">
+                    <div class="content">
+                        <h2>Asesorias por amigo académico</h2>
+                         <app-dinamic-form [formData]="searchAcademicFriendByEmail" (formSubmit)="getConsultancyByAf($event)"></app-dinamic-form>
+                        <div *ngIf="dataxaf.length>0" style="width: 800px;">
+                            <canvas id="consultancyXaf"></canvas>
+                        </div>
+                        <div  *ngIf="dataxaf.length>0" class="header-buttons">
+                            <button mat-button class="download-button" (click)="downloadConsultancies(allConsultancyXCourseDownloadObj, 'AsesoriasTablaAFUFPS')"><b>Descargar gráfico en excel</b></button>
+                            <button mat-button class="download-button" (click)="downloadConsultancies(consultancyByAFtableData, 'AsesoriasTablaAFUFPS')"><b>Descargar tabla</b></button>
+                        </div>
+                        <app-dinamic-table *ngIf="consultancyByAFtableData.length>0" [data]="consultancyByAFtableData" [columnsConfig]="consultancyByAFcolumnNames"></app-dinamic-table>
+                    </div>
+                </section>
+            </ng-template>
+        </mat-tab>
+    </mat-tab-group>
+</section>

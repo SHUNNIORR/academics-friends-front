@@ -23,3 +23,16 @@ export const SEARCH_ACADEMIC_FRIEND_BY_EMAIL: DynamicFormData = {
     ],
     buttonLabel: 'Buscar estudiante',
   };
+  export const UPLOAD_CONTRACT: DynamicFormData = {
+    fields: [
+      {
+        key: 'contract',
+        label: 'Cargar contrato',
+        type: 'file',
+        filesAccepted: 'application/pdf, .pdf',
+        validations: [Validators.required],
+      },
+    ],
+    buttonLabel: 'Cargar contrato',
+  };
+  

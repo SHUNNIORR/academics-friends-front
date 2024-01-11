@@ -43,6 +43,31 @@ export const UPDATE_REPORT_AACA: DynamicFormData = {
   ],
   buttonLabel: 'Corregir informe',
 };
+export const QUALIFY_REPORT_AACA: DynamicFormData = {
+  fields: [
+    {
+      key: 'state',
+      label: 'Estado del informe',
+      type: 'select',
+      required: true,
+      validations: [Validators.required],
+      selectOptions: [
+        { value: 'pass', label: 'Aprobado' },
+        { value: 'pending', label: 'Pendiente' },
+        { value: 'withCorrections', label: 'Corregir' },
+        { value: 'rejected', label: 'Rechazado' },
+      ],
+    },
+    {
+      key: 'observations',
+      label: 'Observaciones',
+      type: 'text',
+      required: true,
+      validations: [Validators.required]
+    },
+  ],
+  buttonLabel: 'Corregir informe',
+};
 export interface ReportResponse {
   id:                  number;
   academicFriendEmail: string;

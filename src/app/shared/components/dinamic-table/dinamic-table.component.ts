@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -24,6 +24,13 @@ export class DinamicTableComponent {
   ngAfterViewInit() {
     if (this.data.length > 0) {
       // Obtener las columnas únicas del primer elemento del array
+      this.displayedColumns = Object.keys(this.data[0]);
+      this.dataSource = new MatTableDataSource(this.data);
+      this.dataSource.paginator = this.paginator;
+    }
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['data'] && changes['data'].currentValue) {
       this.displayedColumns = Object.keys(this.data[0]);
       this.dataSource = new MatTableDataSource(this.data);
       this.dataSource.paginator = this.paginator;

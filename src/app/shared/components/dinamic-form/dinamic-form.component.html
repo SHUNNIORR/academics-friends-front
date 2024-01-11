@@ -49,7 +49,7 @@
                 </mat-form-field>
                 <mat-form-field class="form__field" *ngSwitchCase="'date'">
                     <mat-label>{{ field.label }}</mat-label>
-                    <input matInput [matDatepicker]="picker" [max]="currentDate" [formControlName]="field.key" />
+                    <input matInput [matDatepicker]="picker" [formControlName]="field.key" />
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                     <mat-datepicker #picker></mat-datepicker>
                     <mat-error *ngIf="form.get(field.key)?.hasError('required') && form.get(field.key)?.touched">

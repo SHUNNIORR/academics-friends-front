@@ -4,6 +4,7 @@ import { ENROLLMENT } from '../metadata/enrollment-academic-friend/enrollment-ac
 import { EnrollmentService } from '../services/enrollment/enrollment.service';
 import { CoreService } from 'src/app/core/services/core/core.service';
 import { EnrollStudentRequest } from '../models/Student';
+import { ConvocationService } from '../services/convocation/convocation.service';
 
 @Component({
   selector: 'app-enrollment-academic-friend',
@@ -12,25 +13,36 @@ import { EnrollStudentRequest } from '../models/Student';
 })
 export class EnrollmentAcademicFriendComponent {
   formConfig: DynamicFormData = ENROLLMENT
-  constructor(private enrollmentService:EnrollmentService, private coreService:CoreService){
+  thereActiveConsultancy: boolean = false;
+  constructor(private enrollmentService:EnrollmentService, private convocationService:ConvocationService, private coreService:CoreService){
 
   }
+  ngAfterViewInit() {
+    this.getConvocationActiveService();
+  }
+  getConvocationActiveService() {
+    this.convocationService.getConvocationActive().subscribe({
+      next: (res: any) => {
+        res==null?this.thereActiveConsultancy=false:this.thereActiveConsultancy=true
+      },
+      error: (err: Error) => {
+        this.coreService.showMessage(
+          'Error al consultar convocatoria activa: ' + err.message
+        );
+      },
+    });
+  }
   onFormSubmit(formData: any): void {
-    console.log('Form submitted with data:', formData);
-    console.log('classSchedule:', formData.classSchedule);
-    console.log('resume:', formData.resume.lastModified);
-
-    // Implementar lógica adicional según tus necesidades
     this.enrollStudent(formData);
   }
 
   enrollStudent(student:EnrollStudentRequest){
     this.enrollmentService.enrollStudent(student).subscribe({
       next:(res:any)=>{
-        this.coreService.showMessage("Cursos cargados con exito")
+        this.coreService.showMessage("Inscripción éxitosa")
       },
-      error:(error:Error)=>{
-        this.coreService.showMessage(`Error creando cursos: ${error.message}`)
+      error:(err:any)=>{
+        this.coreService.showMessage(`Error al inscribirse: ${err.error.message}`)
       }
     })
   }

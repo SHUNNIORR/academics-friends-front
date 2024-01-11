@@ -11,7 +11,23 @@ import { CoreService } from 'src/app/core/services/core/core.service';
 })
 export class ConvocationCreateComponent {
   createConvocation = CREATE_CONVOCATION;
+  thereActiveConsultancy: boolean = false;
   constructor(private datePipe:DatePipe, private convocationService:ConvocationService, private coreService:CoreService){}
+  ngAfterViewInit() {
+    this.getConvocationActiveService();
+  }
+  getConvocationActiveService() {
+    this.convocationService.getConvocationActive().subscribe({
+      next: (res: any) => {
+        res==null?this.thereActiveConsultancy=false:this.thereActiveConsultancy=true
+      },
+      error: (err: Error) => {
+        this.coreService.showMessage(
+          'Error al consultar convocatoria activa: ' + err.message
+        );
+      },
+    });
+  }
   onFormSubmit(formData: any): void {
     //console.log('Form submitted with data:', this.datePipe.transform(formData.dateRange.start,'dd/MM/yyyy HH:mm:ss'));
     console.log('Form submitted with data:',this.formatCreateConvocationObj(formData))
@@ -22,8 +38,8 @@ export class ConvocationCreateComponent {
       next:()=>{
         this.coreService.showMessage("¡Convocatoria creada con exito!")
       },
-      error:(err:Error)=>{
-        this.coreService.showMessage("Error al crear convocatoria: "+err.message)
+      error:(err:any)=>{
+        this.coreService.showMessage("Error al crear convocatoria: "+err.error.message)
       }
     })
   }

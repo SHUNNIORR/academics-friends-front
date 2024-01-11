@@ -15,6 +15,10 @@ import { ConvocationCreateComponent } from './modules/convocation-create/convoca
 import { ConsultancySaveComponent } from './modules/consultancy-save/consultancy-save.component';
 import { ConsultancyListComponent } from './modules/consultancy-list/consultancy-list.component';
 import { ConvocationConsultComponent } from './modules/convocation-consult/convocation-consult.component';
+import { ReviewReportComponent } from './modules/review-report/review-report.component';
+import { ConvocationApprovalsComponent } from './modules/convocation-approvals/convocation-approvals.component';
+import { StatsComponent } from './modules/stats/stats.component';
+import { ScheduleAssignmentComponent } from './modules/schedule-assignment/schedule-assignment.component';
 
 const routes: Routes = [
   { path:'', redirectTo:'/login', pathMatch:'full'},
@@ -32,7 +36,11 @@ const routes: Routes = [
       { path: 'asesorias/registrar',  component: ConsultancySaveComponent, canActivate:[authGuardGuard]},
       { path: 'convocatoria-crear',  component: ConvocationCreateComponent, canActivate:[authGuardGuard]},
       { path: 'convocatoria-consultar',  component: ConvocationConsultComponent, canActivate:[authGuardGuard]},
-      { path: 'amigos-academicos',  component: AcademicFriendsComponent, canActivate:[authGuardGuard]}
+      { path: 'convocatoria-aprobar',  component: ConvocationApprovalsComponent, canActivate:[authGuardGuard]},
+      { path: 'amigos-academicos',  component: AcademicFriendsComponent, canActivate:[authGuardGuard]},
+      { path: 'informes-revisar',  component: ReviewReportComponent, canActivate:[authGuardGuard]},
+      { path: 'asignar-horarios',  component: ScheduleAssignmentComponent, canActivate:[authGuardGuard]},
+      { path: 'estadisticas',  component: StatsComponent, canActivate:[authGuardGuard]}
     ]
   },
   { path: '**', component: PageNotFoundComponent }

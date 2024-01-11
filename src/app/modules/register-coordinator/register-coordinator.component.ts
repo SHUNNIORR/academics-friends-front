@@ -27,8 +27,8 @@ export class RegisterCoordinatorComponent {
       next:(res:CreateCoordinatorResponse)=>{
         this.coreService.showMessage(`Coordinador ${res.email} creado con exito`)
       },
-      error:(err:Error)=>{
-        this.coreService.showMessage(`Ocurrió un problema: ${err.message}`)
+      error:(err:any)=>{
+        this.coreService.showMessage(`Ocurrió un problema: ${err.error.message}`)
       }
     })
   }

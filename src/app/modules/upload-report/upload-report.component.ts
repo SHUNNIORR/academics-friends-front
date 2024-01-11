@@ -108,6 +108,7 @@ export class UploadReportComponent {
     this.reportService.saveReport(formDataTest).subscribe({
       next: () => {
         this.coreService.showMessage('Reporte guardado con éxito');
+        this.getReportsByAcademicFriend();
       },
       error: (err: Error) => {
         this.coreService.showMessage('Se presentó un error: ' + err.message);

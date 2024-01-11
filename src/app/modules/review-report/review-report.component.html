@@ -1,0 +1,10 @@
+<section class="container">
+    <div class="content">
+        <h2>Informes pendientes de revisión</h2>
+        <ng-container *ngIf="reports">
+            <ng-container  *ngFor="let report of reports">
+                <app-report-card [data]="report" [coordinator]="true"></app-report-card>
+            </ng-container>
+        </ng-container>
+    </div>
+</section>

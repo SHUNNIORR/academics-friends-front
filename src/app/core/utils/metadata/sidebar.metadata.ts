@@ -67,7 +67,7 @@ export const SIDEBAR_LINKS = [
     icon: 'manage_history',
     type: 'simple',
     link: '/dashboard/asignar-horarios',
-    permisses:['coordinator']
+    permisses:['coordinator','academicFriend']
   },
   {
     moduleName: 'Cargar cursos',

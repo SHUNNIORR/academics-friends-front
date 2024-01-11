@@ -4,6 +4,7 @@
         <div class="user-card">
           <h3>{{userName}}</h3>
           <p>{{email}}</p>
+          <p class="role">{{role}}</p>
         </div>
         <div *ngFor="let item of SIDEBAR_LINKS">
           <div *ngIf="authService.hasPermission(item.permisses)">
