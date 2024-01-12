@@ -14,14 +14,14 @@
             </p>
         </div>
     </section>
-    <section class="home">
+    <section *ngIf="simpleStats" class="home">
         <div class="home__welcome">
             <h2 class="home__welcome__title">Estadisticas</h2>
             <div class="stats__container">
-                <app-stats-card statname="Asesorias hoy" [statvalue]="10"></app-stats-card>
-                <app-stats-card statname="Asesorias esta semana" [statvalue]="50"></app-stats-card>
-                <app-stats-card statname="Asesorias este mes" [statvalue]="200"></app-stats-card>
-                <app-stats-card statname="Asesorias en el semestre" [statvalue]="800"></app-stats-card>
+                <app-stats-card statname="Asesorias hoy" [statvalue]="simpleStats.day"></app-stats-card>
+                <app-stats-card statname="Asesorias esta semana" [statvalue]="simpleStats.week"></app-stats-card>
+                <app-stats-card statname="Asesorias este mes" [statvalue]="simpleStats.month"></app-stats-card>
+                <app-stats-card statname="Asesorias en el semestre" [statvalue]="simpleStats.semester"></app-stats-card>
             </div>
         </div>
     </section>

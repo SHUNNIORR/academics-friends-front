@@ -28,4 +28,8 @@ export class ConsultancyService {
   findConsultancyCourse(courseName:string):Observable<Consultancy[]>{
     return this.http.get<Consultancy[]>(`${this.API_URL}/consultancy/find-by-course/${courseName}`)
   }
+
+  getSimpleConsultancyStats(){
+    return this.http.get(`${this.API_URL}/consultancy/count-between-date-ranges`)
+  }
 }

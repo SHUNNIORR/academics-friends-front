@@ -1,10 +1,10 @@
 <div class="mat-elevation-z8">
-  <table mat-table [dataSource]="dataSource">
+  <table mat-table [dataSource]="dataSource" matSort>
 
     <!-- Crear columnas dinámicamente -->
     <ng-container *ngFor="let column of columnsConfig">
       <ng-container [matColumnDef]="column.key">
-        <th mat-header-cell *matHeaderCellDef>{{ column.label }}</th>
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>{{ column.label }}</th>
         <td mat-cell *matCellDef="let element">{{ element[column.key] }}</td>
       </ng-container>
     </ng-container>
