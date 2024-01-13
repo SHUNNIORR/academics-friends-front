@@ -19,6 +19,7 @@ import { ReviewReportComponent } from './modules/review-report/review-report.com
 import { ConvocationApprovalsComponent } from './modules/convocation-approvals/convocation-approvals.component';
 import { StatsComponent } from './modules/stats/stats.component';
 import { ScheduleAssignmentComponent } from './modules/schedule-assignment/schedule-assignment.component';
+import { ProfileComponent } from './modules/profile/profile.component';
 
 const routes: Routes = [
   { path:'', redirectTo:'/login', pathMatch:'full'},
@@ -40,7 +41,8 @@ const routes: Routes = [
       { path: 'amigos-academicos',  component: AcademicFriendsComponent, canActivate:[authGuardGuard]},
       { path: 'informes-revisar',  component: ReviewReportComponent, canActivate:[authGuardGuard]},
       { path: 'asignar-horarios',  component: ScheduleAssignmentComponent, canActivate:[authGuardGuard]},
-      { path: 'estadisticas',  component: StatsComponent, canActivate:[authGuardGuard]}
+      { path: 'estadisticas',  component: StatsComponent, canActivate:[authGuardGuard]},
+      { path: 'perfil',  component: ProfileComponent, canActivate:[authGuardGuard]}
     ]
   },
   { path: '**', component: PageNotFoundComponent }

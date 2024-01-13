@@ -79,7 +79,7 @@
             </div>
         </ng-container>
         <div mat-dialog-actions class="form__button-container">
-            <button class="form__button-container--button-cancel" (click)="onCancel()">Cancelar</button>
+            <button class="form__button-container--button-cancel"  mat-dialog-close>Cancelar</button>
             <button *ngIf="itsDateRange" class="form__button-container--button-submit" type="submit"
                 [disabled]="form.invalid || dateRange.invalid">{{formData.buttonLabel}}</button>
             <button *ngIf="!itsDateRange" class="form__button-container--button-submit" type="submit"

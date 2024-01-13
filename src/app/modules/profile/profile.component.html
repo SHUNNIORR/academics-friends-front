@@ -1,0 +1,18 @@
+<section class="container">
+    <div *ngIf="studentInfo" class="container__studentList">
+        <div class="container__forms__content">
+            <div class="container__studentList__card">
+                <img src="../../../assets/student-icon.png" width="100px" height="100px">
+                <div class="container__studentList__card__info">
+                    <div class="container__studentList__card__info--content">
+                        <p><b>Nombre:</b><br>{{studentInfo.name}}</p>
+                        <p><b>Correo:</b><br>{{studentInfo.email}}</p>
+                        <p><b>Código:</b><br>{{studentInfo.code}}</p>
+                        <p><b>Tipo:</b><br>{{studentInfo.type}}</p>
+                        <button class="reset-password" (click)="openDialogReplyAssignment()"> Cambiar contraseña </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

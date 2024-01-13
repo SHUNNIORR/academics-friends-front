@@ -53,16 +53,25 @@ export class ReportCardComponent {
   }
 
   openDialogQualifyReport(reportId:number){
+    console.log(reportId)
     const formData = QUALIFY_REPORT_AACA
     this.dialogService.openDynamicDialog('Calificar informe de asesorias', formData)
       .afterClosed()
       .subscribe((res:any) => {
+        const file:File = res.file
+        console.log(res)
+        if(res == ''){
+          return
+        }
+        if(res.file != ""){
+          this.correctReportService(reportId,file)
+        }
+        delete res.file
         const objToQualify={
           id: reportId,
           ...res
         }
-        console.log(objToQualify)
-        this.qualifyReportService(objToQualify);
+        //this.qualifyReportService(objToQualify);
       });
   }
   qualifyReportService(reportObj:any){
@@ -81,6 +90,7 @@ export class ReportCardComponent {
         this.coreService.showMessage('Reporte corregido correctamente!');
       },
       error:(err:any)=>{
+        console.log(err)
         this.coreService.showMessage('Hubo un error actualizando el reporte:'+ err.error.message);
       }
     })

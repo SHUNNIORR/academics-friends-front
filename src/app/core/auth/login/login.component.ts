@@ -59,6 +59,7 @@ export class LoginComponent {
         localStorage.setItem("email", res.email);
         localStorage.setItem("name", res.name);
         localStorage.setItem("role",res.type)
+        localStorage.setItem("code",res.code)
         this.coreService.showMessage('Bienvenido a Amigos a acádemicos');
       },
       error: () => {

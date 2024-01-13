@@ -1,0 +1,18 @@
+<div class="buttons-container">
+  <button class="download-schedule" (click)="generateImage()">Descargar horario</button>
+</div>
+<div #schedule *ngIf="scheduleData!=null;else elseTemplate"  class="calendar__container">
+  <div *ngFor="let day of scheduleData.days">
+      <h3>{{ day.day=='MONDAY'?'Lunes':day.day=='TUESDAY'?'Martes':day.day=='WEDNESDAY'?'Miércoles':day.day=='THURSDAY'?'Jueves':day.day=='FRIDAY'?'Viernes':'' }}</h3>
+      <div [ngClass]="{'hour': true, 'disabled': hour.classroom === null, 'available': hour.classroom != null, 'already-assigned': assignCalendar && alreadyAssigned(hour.academicFriends)}" *ngFor="let hour of day.hours">
+        <p><b>{{ hour.hour }}</b></p>
+        <p >{{ transformAcademicFriends(hour.academicFriends).join(', ') }}</p>
+        <p><b>{{ hour.classroom }}</b> </p>
+        <button class="assign-button" *ngIf="assignCalendar &&  hour.classroom != null && !alreadyAssigned(hour.academicFriends)" (click)="emittEvent(hour,day.day)"> <mat-icon>event_upcoming</mat-icon></button>
+      </div>
+    </div>
+   
+</div>
+<ng-template #elseTemplate>
+  <p>No hay información para mostrar</p>
+</ng-template>

@@ -59,6 +59,13 @@ export const QUALIFY_REPORT_AACA: DynamicFormData = {
       ],
     },
     {
+      key: 'file',
+      label: 'Subir informe corregido',
+      type: 'file',
+      filesAccepted:'application/pdf, .pdf',
+      validations: [],
+    },
+    {
       key: 'observations',
       label: 'Observaciones',
       type: 'text',

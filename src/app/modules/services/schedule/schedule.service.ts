@@ -21,7 +21,7 @@ export class ScheduleService {
   getSchedulesByEmail(email:string){
     return this.http.get(`${this.API_URL}/schedule/find-by-academic-friend/${email}`)
   }
-  replySchedule(replyObj:any){
-    return this.http.put(`${this.API_URL}/schedule`,replyObj)
+  assignSchedule(replyObj:any){
+    return this.http.post(`${this.API_URL}/schedule/add-academic-friend`,replyObj)
   }
 }

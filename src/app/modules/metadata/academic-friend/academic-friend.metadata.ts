@@ -35,4 +35,16 @@ export const SEARCH_ACADEMIC_FRIEND_BY_EMAIL: DynamicFormData = {
     ],
     buttonLabel: 'Cargar contrato',
   };
+  export const RESET_PASSWORD: DynamicFormData = {
+    fields: [
+      {
+        key: 'password',
+        label: 'Contraseña',
+        type: 'password',
+        validations: [Validators.required],
+      },
+    ],
+    buttonLabel: 'Guardar',
+  };
+  
   

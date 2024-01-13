@@ -8,9 +8,14 @@
           <img src="../../../assets/logo-amigosaca.png" width="40" height="40" alt="Logo amigos académicos"/>
           <h2><b>Amigos académicos IS</b> </h2>
         </div>
-        <button (click)="logout()" title="Salir" mat-icon-button aria-label="salir" matTooltip="Salir">
-          <mat-icon>logout</mat-icon>
-        </button>
+        <div class="left-buttons">
+          <button (click)="goToProfile()" title="Salir" mat-icon-button aria-label="Perfil" matTooltip="Perfil">
+            <mat-icon>account_circle</mat-icon>
+          </button>
+          <button (click)="logout()" title="Salir" mat-icon-button aria-label="salir" matTooltip="Salir">
+            <mat-icon>logout</mat-icon>
+          </button>
+        </div>
       </div>
     </mat-toolbar-row>
 </mat-toolbar>

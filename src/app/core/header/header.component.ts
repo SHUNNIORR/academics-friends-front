@@ -19,4 +19,8 @@ export class HeaderComponent {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
+
+  goToProfile(){
+    this.router.navigate(['/dashboard/perfil']);
+  }
 }

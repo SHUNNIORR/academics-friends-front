@@ -18,6 +18,8 @@ import { ReviewReportComponent } from './review-report/review-report.component';
 import { ConvocationApprovalsComponent } from './convocation-approvals/convocation-approvals.component';
 import { StatsComponent } from './stats/stats.component';
 import { ScheduleAssignmentComponent } from './schedule-assignment/schedule-assignment.component';
+import { CalendarComponent } from './calendar/calendar.component';
+import { ProfileComponent } from './profile/profile.component';
 @NgModule({
   declarations: [
     UploadReportComponent,
@@ -34,6 +36,8 @@ import { ScheduleAssignmentComponent } from './schedule-assignment/schedule-assi
     ConvocationApprovalsComponent,
     StatsComponent,
     ScheduleAssignmentComponent,
+    CalendarComponent,
+    ProfileComponent,
   ],
   imports: [
     CommonModule,

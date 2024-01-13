@@ -1,30 +1,46 @@
-<section class="container">
+
     <mat-tab-group *ngIf="isCoordinator">
-        <mat-tab label="Asignar horario"> 
+        <mat-tab label="Habilitar horario">
             <section class="container">
                 <div class="content">
-                    <h2>Buscar asesorias por amigo académico</h2>
-                    <app-dinamic-form [formData]="assignScheduleForm" (formSubmit)="saveSchedule($event)"></app-dinamic-form>
+                    <h2>Habilitar horario y sala</h2>
+                    <app-dinamic-form [formData]="assignScheduleForm"
+                        (formSubmit)="saveSchedule($event)"></app-dinamic-form>
                 </div>
             </section>
         </mat-tab>
-        <mat-tab label="Solicitudes de horario"> 
+        <mat-tab label="Horario de asesorias">
             <section class="container">
                 <div class="content">
-                    <h2>Solicitudes de horarios</h2>
-                    <app-dinamic-table *ngIf="assignScheduleTableData.length>0;else elseBlockAssignment" [hasPaginator]="false" [data]="assignScheduleTableData" [columnsConfig]="assignScheduleColumnNames"></app-dinamic-table> 
+                    <h2>Horario de asesorias Amigos académicos IS</h2>
+                    <p >Horas disponibles: {{assignCalendarData.numberOfHours}}</p>
+                    <app-calendar [assignCalendar]="false" (optionsButtonClick)="enableSchedule($event)"
+                        [scheduleData]="assignCalendarData"></app-calendar>
                 </div>
-                <ng-template #elseBlockAssignment>
-                    <p>No existen asignaciones de horario</p>
-                </ng-template>
             </section>
         </mat-tab>
     </mat-tab-group>
-    <div *ngIf="!isCoordinator" class="content">
-        <h2>Mis asignaciones de horario</h2>
-        <app-dinamic-table *ngIf="assignScheduleByEmailTableData.length>0; else elseBlock" [hasPaginator]="false" [data]="assignScheduleByEmailTableData" [columnsConfig]="assignScheduleColumnNames" (optionsButtonClick)="handleCustomEvent($event)" [hasOptions]="true" [optionsData]="optionsData"></app-dinamic-table> 
-        <ng-template #elseBlock>
-            <p>No existen asignaciones de horario asignadas a ti</p>
-        </ng-template>
-    </div>
-</section>
+    <mat-tab-group *ngIf="!isCoordinator">
+        <mat-tab label="Mi horario">
+            <section class="container">
+                <div class="content">
+        
+                    <h2>Mi horario</h2>
+                    <p>Horas asignadas: <b [ngClass]="{'assignincompleted':afCalendarData.numberOfHours<20, 'assigncompleted':afCalendarData.numberOfHours>=20}">{{afCalendarData.numberOfHours}}</b></p>
+                    <app-calendar [assignCalendar]="false" (optionsButtonClick)="handleCustomEvent($event)"
+                        [scheduleData]="afCalendarData"></app-calendar>
+                </div>
+            </section>
+        </mat-tab>
+        <mat-tab label="Asignación de horario">
+            <section class="container">
+                <div class="content">
+                    <h2>Asignar Horario</h2>
+                    <p >Horas disponibles: {{assignCalendarData.numberOfHours}}</p>
+                    <p *ngIf="afCalendarData.numberOfHours>=20" class="warning"><b>¡No puedes asignar más horarios, ya cumples con el total de 20hrs!</b></p>
+                    <app-calendar [assignCalendar]="afCalendarData.numberOfHours<20?true:false" (optionsButtonClick)="handleCustomEvent($event)"
+                        [scheduleData]="assignCalendarData"></app-calendar>
+                </div>
+            </section>
+        </mat-tab>
+    </mat-tab-group>
