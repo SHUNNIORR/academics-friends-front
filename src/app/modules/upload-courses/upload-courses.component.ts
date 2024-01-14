@@ -17,8 +17,6 @@ export class UploadCoursesComponent {
 
   }
   onFormSubmit(formData: any): void {
-    console.log('Form submitted with data:', formData);
-    // Implementar lógica adicional según tus necesidades
     this.createCourses(formData.file);
   }
 

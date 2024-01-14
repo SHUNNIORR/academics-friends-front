@@ -50,6 +50,9 @@ export class AcademicFriendCardComponent {
       .openDynamicDialog('Corregir informe de asesorias', formData)
       .afterClosed()
       .subscribe((res: any) => {
+        if(res == ''){
+          return
+        }
         const file: File = res.file;
         console.log(res);
         this.correctReportService(reportId, file);

@@ -20,7 +20,7 @@ export class ConsultancySaveComponent {
   }
 
   ngOnInit(){
-    //this.getAllCoursesService()
+    this.getAllCoursesService()
   }
   onFormSubmit(formData: any): void {
     this.saveConsultancyService( this.formatSaveConsultancyObj(formData));
@@ -60,7 +60,6 @@ export class ConsultancySaveComponent {
             value: course.name, label:  course.name
           })
         })
-        console.log('CURSOSSSS', selectOptionsCourses)
         this.formConfig.fields[1].selectOptions=selectOptionsCourses;
       },
       error:(err:any)=>{

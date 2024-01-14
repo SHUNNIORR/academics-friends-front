@@ -36,12 +36,10 @@ export class AcademicFriendsComponent {
     this.getAllAcademicFriends();
   }
   getConsultancyByAf(event: any): void {
-    console.log('Form submitted with data:', event);
     // Implementar lógica adicional según tus necesidades
     this.getConsultancyByEmail(event.academicFriendEmail);
   }
   getAfInfo(formData: any): void {
-    console.log('Form submitted with data:', formData.academicFriendCode);
     // Implementar lógica adicional según tus necesidades
     this.getAcademicFriendByCode( formData.academicFriendCode)
   }
@@ -49,7 +47,6 @@ export class AcademicFriendsComponent {
   getConsultancyByEmail(email:string){
       this.consultancyService.getAllConsultancyByEmail(email).subscribe({
         next:(res:any)=>{
-          console.log(res)
           if(res==null){
             this.consultancyByAFtableData=[]
             this.coreService.showMessage('No se encontró el amigo académico: '+email)
@@ -58,7 +55,6 @@ export class AcademicFriendsComponent {
           }
         },
         error:(err:any)=>{
-          console.log(err)
           this.coreService.showMessage('Hubo un error: ' + err.error.message)
         }
       })
@@ -67,7 +63,6 @@ export class AcademicFriendsComponent {
   getAcademicFriendByCode(code:number){
     this.academicFriendsService.findAcademicFriendByCode(code).subscribe({
       next:(res:any)=>{
-        console.log(res)
         if(res==null){
           this.findAFByCodetableData=[]
           this.coreService.showMessage('No se encontró el amigo académico: '+code)
@@ -76,7 +71,6 @@ export class AcademicFriendsComponent {
         }
       },
       error:(err:any)=>{
-        console.log(err)
         this.coreService.showMessage('Hubo un error: ' + err.error.message)
       }
     })
@@ -85,23 +79,19 @@ export class AcademicFriendsComponent {
   getAllAcademicFriends(){
     this.academicFriendsService.getAllAcademicFriends().subscribe({
       next:(res:any)=>{
-        console.log(res)
         this.allAftableData=res.filter((obj: { status: string; }) => obj.status === "pass");
       },
       error:(err:any)=>{
-        console.log(err)
         this.coreService.showMessage('Hubo un error: ' + err.error.message)
       }
     })
   }
   handleCustomEvent(event: any) {
     if (event.id == 'downloadHV') {
-      console.log('DESCARGAR');
       this.downloadFileService(event.element.resume);
     } else if (event.id == 'downloadContract') {
       this.downloadFileService(event.element.contract);
     } else if (event.id == 'uploadContract') {
-      // console.log('Calificar');
       this.openDialogUploadContract(event);
     }
   }
@@ -133,9 +123,9 @@ export class AcademicFriendsComponent {
       .openDynamicDialog('Cargar contrato', formData)
       .afterClosed()
       .subscribe((res: any) => {
-        console.log(res);
-        console.log('data', data);
-        
+        if(res == ''){
+          return
+        }
         this.uploadContractStudentService(res.contract, data.element.email);
       });
   }

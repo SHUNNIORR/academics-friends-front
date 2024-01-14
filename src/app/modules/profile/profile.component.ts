@@ -25,7 +25,6 @@ export class ProfileComponent {
   getUserInfo(email:string) {
     this.academicFriendsService.getAcademicFriendByEmail(email).subscribe({
       next: (res: any) => {
-        console.log('STUDENT DATA:', res);
         if(res){
           this.studentInfo = res;
         }else{
@@ -46,7 +45,6 @@ export class ProfileComponent {
         if(res == ''){
           return
         }
-        console.log(res)
          const objToResetPassword = {
             email:localStorage.getItem('email'),
             password:res.password,

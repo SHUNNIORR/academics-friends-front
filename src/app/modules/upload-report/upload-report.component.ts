@@ -67,8 +67,6 @@ export class UploadReportComponent {
     private reportService: ReportService
   ) {
     this.reportUpdatedSubscription = this.reportService.onReportUpdated().subscribe(() => {
-      // Realizar acciones necesarias cuando se actualiza un informe
-      console.log('Se ha actualizado un informe. Recargar datos...');
       this.getReportsByAcademicFriend()
       // Lógica para recargar la información
     });
@@ -83,7 +81,6 @@ export class UploadReportComponent {
     if (this.userEmail) {
       this.reportService.getReportsByAcademicFriend(this.userEmail).subscribe({
         next: (res: any) => {
-          console.log(res);
           this.reports = res;
         },
         error: (err: Error) => {
@@ -104,7 +101,6 @@ export class UploadReportComponent {
     formDataTest.append('date', formData.date);
     formDataTest.append('type', formData.type);
     formDataTest.append('file', formData.file);
-    console.log('Form submitted with data:', formDataTest);
     this.reportService.saveReport(formDataTest).subscribe({
       next: () => {
         this.coreService.showMessage('Reporte guardado con éxito');

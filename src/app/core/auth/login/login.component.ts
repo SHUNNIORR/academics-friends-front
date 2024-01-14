@@ -49,11 +49,9 @@ export class LoginComponent {
   };
 
   onFormSubmit(formData: any): void {
-    console.log('Form submitted with data:', formData);
     this.authService
       .login(formData)
       .subscribe({ next: (res:LoginUserResponse) => {
-        console.log(res)
         this.authService.saveTokenToLocal(res.jwt);
         this.router.navigate(['/dashboard'])
         localStorage.setItem("email", res.email);

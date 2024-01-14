@@ -29,8 +29,6 @@ export class DinamicDialogComponent {
   }
 
   ngOnInit(): void {
-    console.log('form', this.formData)
-    // Construir el formulario aquí basado en la configuración recibida
     this.buildForm();
   }
   dateRange = new FormGroup({
@@ -57,7 +55,6 @@ export class DinamicDialogComponent {
         formGroup[field.key] = [field.value || '', validators];
       }
     });
-    console.log('grupo',formGroup)
     this.form = this.fb.group(formGroup);
   }
 

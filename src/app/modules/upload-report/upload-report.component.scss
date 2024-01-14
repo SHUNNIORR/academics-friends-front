@@ -5,6 +5,15 @@
     flex-direction: column;
     gap: 10px;
     margin-bottom: 7vh;
+    @media (max-width: 767px) {
+        width: 100vw;
+    }
+}
+.scrollable{
+    @media (max-width: 767px) {
+        overflow: auto;
+        width: 100vw;
+    }
 }
 .content{
     width: -webkit-fill-available;

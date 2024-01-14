@@ -19,19 +19,15 @@ export class UploadStudentsComponent {
     private coreService: CoreService
   ) {}
   onFormSubmit(formData: any): void {
-    console.log('Form submitted with data:', formData.file);
-    // Implementar lógica adicional según tus necesidades
     this.createStudents(formData.file);
   }
   onSearchStudent(formData: any): void {
-    console.log('Form submitted with data:', formData);
     this.searchStudentService(formData.studentCode);
   }
 
   searchStudentService(code: string) {
     this.studentsService.searchStudent(code).subscribe({
       next: (res: any) => {
-        console.log('STUDENT DATA:', res);
         if(res){
           this.studentInfo = res;
         }else{

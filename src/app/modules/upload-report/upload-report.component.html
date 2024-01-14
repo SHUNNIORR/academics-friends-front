@@ -1,6 +1,6 @@
 <section class="container">
     <mat-tab-group>
-        <mat-tab label="Cargar informes"> 
+        <mat-tab label="Cargar informes">
             <section class="container">
                 <div class="content">
                     <h2>Cargar informe de asesorias</h2>
@@ -8,14 +8,16 @@
                 </div>
             </section>
         </mat-tab>
-        <mat-tab label="Mis informes"> 
+        <mat-tab label="Mis informes">
             <section class="container">
                 <div class="content">
                     <h2>Mis informes</h2>
-                    <ng-container *ngIf="reports">
-                        <ng-container  *ngFor="let report of reports">
-                            <app-report-card [data]="report" [coordinator]="false"></app-report-card>
-                        </ng-container>
+                    <ng-container class="scrollable" *ngIf="reports">
+                        <div class="scrollable">
+                            <ng-container *ngFor="let report of reports">
+                                <app-report-card [data]="report" [coordinator]="false"></app-report-card>
+                            </ng-container>
+                        </div>
                     </ng-container>
                 </div>
             </section>

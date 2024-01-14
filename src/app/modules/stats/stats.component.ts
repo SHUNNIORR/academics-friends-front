@@ -81,7 +81,6 @@ export class StatsComponent {
         clearInterval(intervalId);
         // Detener la espera
         if (chartId == 'consultancyXcourses') {
-          console.log('Hola');
           this.createChart(chartId, this.data, this.labels);
         } else if (chartId == 'consultancyXcourse') {
           this.createChart(chartId, this.dataxcourse, this.labelsxcourse);
@@ -254,7 +253,6 @@ export class StatsComponent {
           this.dataxcourse = [];
           this.labelsxcourse = [];
           this.countConsultanciesByAcademicFriend(res).map((consultancy) => {
-            console.log('resxcourse', consultancy);
             this.dataxcourse.push(consultancy.consultancies);
             this.labelsxcourse.push(consultancy.academicFriendEmail);
           });
@@ -278,7 +276,6 @@ export class StatsComponent {
   }
 
   getConsultanciesBySemester(event:any){
-    console.log(event)
     this.semester = event.semester;
     const semester = event.semester.split('-');
     const anio: string = semester[0]; // Convertir a número
@@ -288,15 +285,11 @@ export class StatsComponent {
       initialDate: `${anio}-${semestre==1?'01':'06'}-01T00:00`,
       finalDate: `${anio}-${semestre==1?'06':'12'}-${semestre==1?'30':'31'}T00:00`
     }
-
-    console.log(dates)
     this.getConsultancyBetweenDatesService(dates);
-
   }
   getConsultancyByAfEmail(email: string) {
     this.consultancyService.getAllConsultancyByEmail(email).subscribe({
       next: (res: any) => {
-        console.log(res);
         if (res.length==0) {
           this.consultancyByAFtableData = [];
           this.coreService.showMessage(
@@ -315,7 +308,6 @@ export class StatsComponent {
         }
       },
       error: (err: any) => {
-        console.log(err);
         this.coreService.showMessage('Hubo un error: ' +  err.error.message);
       },
     });
@@ -329,7 +321,6 @@ export class StatsComponent {
             value: course.name, label:  course.name
           })
         })
-        console.log('CURSOSSSS', selectOptionsCourses)
         this.searchCourseByName.fields[0].selectOptions=selectOptionsCourses;
       },
       error:(err:any)=>{

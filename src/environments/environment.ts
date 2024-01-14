@@ -1,4 +1,4 @@
 export const environment = {
     production: false,
-    url: 'http://54.211.245.98:8080/ufps/academic-friends-api'
+    url: 'http://54.237.5.137:8080/ufps/academic-friends-api'
   };

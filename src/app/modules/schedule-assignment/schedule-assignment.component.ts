@@ -36,7 +36,6 @@ export class ScheduleAssignmentComponent {
     }
   }
   saveSchedule(event:any){
-    console.log(event)
     this.saveScheduleService(event)
   }
   getAllSchedule(){
@@ -72,8 +71,7 @@ export class ScheduleAssignmentComponent {
   }
   getScheduleByEmailService(email:string){
     this.scheduleService.getSchedulesByEmail(email).subscribe({
-      next:(res:any)=>{  
-        console.log(res)
+      next:(res:any)=>{ 
         if(res.length==0){
           return this.coreService.showMessage('Aún no tienes asignaciones de horario')
         }
@@ -96,7 +94,6 @@ export class ScheduleAssignmentComponent {
     this.dialogService.openDynamicDialog(`Tomar horario de: ${this.getDayInSpanish(data.day)}:${data.hourObject.hour} a ...`, formData)
       .afterClosed()
       .subscribe((res:any) => {
-       
         if(res == ''){
           return
         }
@@ -122,7 +119,6 @@ export class ScheduleAssignmentComponent {
             id:data.element.id,
             ...res
           }
-          console.log(objToReply)
           //this.assignmentAcheduleService(objToReply)
       });
   }

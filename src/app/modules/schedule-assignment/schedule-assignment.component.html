@@ -1,46 +1,56 @@
-
-    <mat-tab-group *ngIf="isCoordinator">
-        <mat-tab label="Habilitar horario">
-            <section class="container">
-                <div class="content">
-                    <h2>Habilitar horario y sala</h2>
-                    <app-dinamic-form [formData]="assignScheduleForm"
-                        (formSubmit)="saveSchedule($event)"></app-dinamic-form>
-                </div>
-            </section>
-        </mat-tab>
-        <mat-tab label="Horario de asesorias">
-            <section class="container">
-                <div class="content">
-                    <h2>Horario de asesorias Amigos académicos IS</h2>
-                    <p >Horas disponibles: {{assignCalendarData.numberOfHours}}</p>
+<mat-tab-group class="dinamic-view" *ngIf="isCoordinator">
+    <mat-tab label="Habilitar horario">
+        <section class="container">
+            <div class="content">
+                <h2>Habilitar horario y sala</h2>
+                <app-dinamic-form [formData]="assignScheduleForm"
+                    (formSubmit)="saveSchedule($event)"></app-dinamic-form>
+            </div>
+        </section>
+    </mat-tab>
+    <mat-tab label="Horario de asesorias">
+        <section class="container">
+            <div class="content">
+                <h2>Horario de asesorias Amigos académicos IS</h2>
+                <p>Horas disponibles: {{assignCalendarData.numberOfHours}}</p>
+                <div class="scrollable">
                     <app-calendar [assignCalendar]="false" (optionsButtonClick)="enableSchedule($event)"
                         [scheduleData]="assignCalendarData"></app-calendar>
                 </div>
-            </section>
-        </mat-tab>
-    </mat-tab-group>
-    <mat-tab-group *ngIf="!isCoordinator">
-        <mat-tab label="Mi horario">
-            <section class="container">
-                <div class="content">
-        
-                    <h2>Mi horario</h2>
-                    <p>Horas asignadas: <b [ngClass]="{'assignincompleted':afCalendarData.numberOfHours<20, 'assigncompleted':afCalendarData.numberOfHours>=20}">{{afCalendarData.numberOfHours}}</b></p>
+            </div>
+        </section>
+    </mat-tab>
+</mat-tab-group>
+<mat-tab-group class="dinamic-view" *ngIf="!isCoordinator">
+    <mat-tab label="Mi horario">
+        <section class="container">
+            <div class="content">
+
+                <h2>Mi horario</h2>
+                <p>Horas asignadas: <b
+                        [ngClass]="{'assignincompleted':afCalendarData.numberOfHours<20, 'assigncompleted':afCalendarData.numberOfHours>=20}">{{afCalendarData.numberOfHours}}</b>
+                </p>
+                <div class="scrollable">
                     <app-calendar [assignCalendar]="false" (optionsButtonClick)="handleCustomEvent($event)"
                         [scheduleData]="afCalendarData"></app-calendar>
                 </div>
-            </section>
-        </mat-tab>
-        <mat-tab label="Asignación de horario">
-            <section class="container">
-                <div class="content">
-                    <h2>Asignar Horario</h2>
-                    <p >Horas disponibles: {{assignCalendarData.numberOfHours}}</p>
-                    <p *ngIf="afCalendarData.numberOfHours>=20" class="warning"><b>¡No puedes asignar más horarios, ya cumples con el total de 20hrs!</b></p>
-                    <app-calendar [assignCalendar]="afCalendarData.numberOfHours<20?true:false" (optionsButtonClick)="handleCustomEvent($event)"
+            </div>
+        </section>
+    </mat-tab>
+    <mat-tab label="Asignación de horario">
+        <section class="container">
+            <div class="content">
+                <h2>Asignar Horario</h2>
+                <p>Horas disponibles: {{assignCalendarData.numberOfHours}}</p>
+                <p *ngIf="afCalendarData.numberOfHours>=20" class="warning"><b>¡No puedes asignar más horarios, ya
+                        cumples con el total de 20hrs!</b></p>
+                <div class="scrollable">
+                    <app-calendar [assignCalendar]="afCalendarData.numberOfHours<20?true:false"
+                        (optionsButtonClick)="handleCustomEvent($event)"
                         [scheduleData]="assignCalendarData"></app-calendar>
+
                 </div>
-            </section>
-        </mat-tab>
-    </mat-tab-group>
+            </div>
+        </section>
+    </mat-tab>
+</mat-tab-group>

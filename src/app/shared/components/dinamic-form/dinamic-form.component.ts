@@ -48,7 +48,6 @@ export class DinamicFormComponent {
         formGroup[field.key] = [field.value || '', validators];
       }
     });
-    console.log('grupo',formGroup)
     this.form = this.fb.group(formGroup);
   }
 

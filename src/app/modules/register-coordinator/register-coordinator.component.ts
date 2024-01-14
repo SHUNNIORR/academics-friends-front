@@ -18,7 +18,6 @@ export class RegisterCoordinatorComponent {
 
   }
   onFormSubmit(formData: any): void {
-    console.log('Form submitted with data:', formData);
     this.createCoordinator(formData);
   }
 

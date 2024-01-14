@@ -4,7 +4,7 @@
         <div class="header-buttons">
             <button mat-button class="download-button" (click)="downloadConsultancies(tableData, 'AsesoriasAFUFPS')"><b>Descargar asesorias</b></button>
         </div>
-        <app-dinamic-table *ngIf="tableData.length>0;else elseBlock" [data]="tableData" [columnsConfig]="columnNames"></app-dinamic-table>
+        <app-dinamic-table style="width: 100%;" *ngIf="tableData.length>0;else elseBlock" [data]="tableData" [columnsConfig]="columnNames"></app-dinamic-table>
         <ng-template #elseBlock>
             <p>Oops, parece que no tienes ninguna asesoría registrada</p>
         </ng-template>

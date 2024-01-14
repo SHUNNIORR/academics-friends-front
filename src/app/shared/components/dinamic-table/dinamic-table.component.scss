@@ -1,12 +1,26 @@
 .mat-elevation-z8{
 }
+.scrollable-table{
+  @media (max-width: 767px) {
+    overflow: auto;
+  }
+}
 table {
     width: 100%;
     border-collapse: collapse;
+    @media (max-width: 767px) {
+      width: 100%;
+      border-collapse: collapse; /* Puedes ajustar esto según tus necesidades */
+      overflow-x: auto;
+    }
   }
 
   th, td {
     text-align: left;
+    @media (max-width: 767px) {
+      width: 100%;
+      box-sizing: border-box
+    }
   }
   td{
     border-right: 1px solid rgba(0, 0, 0, 0.12);

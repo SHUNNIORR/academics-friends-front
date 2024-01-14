@@ -29,8 +29,6 @@ export class ConvocationCreateComponent {
     });
   }
   onFormSubmit(formData: any): void {
-    //console.log('Form submitted with data:', this.datePipe.transform(formData.dateRange.start,'dd/MM/yyyy HH:mm:ss'));
-    console.log('Form submitted with data:',this.formatCreateConvocationObj(formData))
     this.createConvocationService(this.formatCreateConvocationObj(formData));
   }
   createConvocationService(convocationObj:any){

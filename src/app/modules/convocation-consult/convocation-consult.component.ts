@@ -141,8 +141,6 @@ export class ConvocationConsultComponent {
         this.tableData = [res];
         this.activeConvocationId = res.id;
         this.getRegisteredStudentsByActiveConvocationService(res.id);
-        //this.studentsTableData = this.reports;
-        console.log('tabla de convocatoria activa', this.tableData);
         this.changeDetectorRef.detectChanges();
       },
       error: (err: Error) => {
@@ -167,12 +165,10 @@ export class ConvocationConsultComponent {
   }
   handleCustomEvent(event: any) {
     if (event.id == 'downloadHV') {
-      console.log('DESCARGAR');
       this.downloadFileService(event.element.resume);
     } else if (event.id == 'downloadContract') {
       this.downloadFileService(event.element.contract);
     } else if (event.id == 'qualify') {
-      console.log('Calificar');
       this.openDialogQualifyStudent(event);
     }
   }
@@ -204,8 +200,9 @@ export class ConvocationConsultComponent {
       .openDynamicDialog('Calificar estudiante', formData)
       .afterClosed()
       .subscribe((res: any) => {
-        console.log(res);
-        console.log('data', data);
+        if(res == ''){
+          return
+        }
         const objToQualifyStudent = {
           email: data.element.email,
           score: Number(res.score),

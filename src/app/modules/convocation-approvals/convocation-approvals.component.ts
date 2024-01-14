@@ -57,12 +57,10 @@ export class ConvocationApprovalsComponent {
   }
   handleCustomEvent(event: any) {
     if (event.id == 'downloadHV') {
-      console.log('DESCARGAR');
       this.downloadFileService(event.element.resume);
     } else if (event.id == 'downloadContract'){
       this.downloadFileService(event.element.contract);
     } else if (event.id == 'approve'){
-      console.log('Calificar')
       this.openDialogApproveStudent(event)
     }
   } 
@@ -91,8 +89,9 @@ export class ConvocationApprovalsComponent {
     this.dialogService.openDynamicDialog('Aprobar estudiante', formData)
       .afterClosed()
       .subscribe((res:any) => {
-          console.log(res)
-          console.log('data',data)
+        if(res == ''){
+          return
+        }
          const objToQualifyStudent = {
             email:data.element.email,
             score:data.element.score,
@@ -100,7 +99,6 @@ export class ConvocationApprovalsComponent {
             state:"pass",
             password:res.password
           }
-          console.log(objToQualifyStudent)
           this.approveStudentService(objToQualifyStudent)
       });
   }

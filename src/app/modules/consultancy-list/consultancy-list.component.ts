@@ -26,11 +26,9 @@ export class ConsultancyListComponent {
     if(this.email){
       this.consultancyService.getAllConsultancyByEmail(this.email).subscribe({
         next:(res:any)=>{
-          console.log(res)
           this.tableData=res;
         },
         error:(err:any)=>{
-          console.log(err)
           this.coreService.showMessage('Hubo un error: ' + err.error.message)
         }
       })
