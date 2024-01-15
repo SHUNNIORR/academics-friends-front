@@ -39,7 +39,7 @@
                 <button mat-button (click)="openDialogQualifyReport(data!.id)"><b>Calificar informe</b></button>
             </ng-container>
             <ng-container *ngIf="!coordinator && data?.state=='withCorrections'">
-                <button mat-button (click)="openDialogCorrectReport(data!.id)"><b>Corregir informe</b></button>
+                <button mat-button (click)="openDialogCorrectReport(data!.id, data)"><b>Corregir informe</b></button>
             </ng-container>
         </div>
     </div>

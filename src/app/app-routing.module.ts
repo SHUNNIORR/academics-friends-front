@@ -4,22 +4,22 @@ import { PageNotFoundComponent } from './shared/components/page-not-found/page-n
 import { LoginComponent } from './core/auth/login/login.component';
 import { MainComponent } from './layouts/main/main.component';
 import { authGuardGuard } from './core/guards/auth-guard.guard';
-import { HomeComponent } from './modules/home/home.component';
-import { UploadReportComponent } from './modules/upload-report/upload-report.component';
-import { UploadStudentsComponent } from './modules/upload-students/upload-students.component';
-import { RegisterCoordinatorComponent } from './modules/register-coordinator/register-coordinator.component';
-import { UploadCoursesComponent } from './modules/upload-courses/upload-courses.component';
-import { EnrollmentAcademicFriendComponent } from './modules/enrollment-academic-friend/enrollment-academic-friend.component';
-import { AcademicFriendsComponent } from './modules/academic-friends/academic-friends.component';
-import { ConvocationCreateComponent } from './modules/convocation-create/convocation-create.component';
-import { ConsultancySaveComponent } from './modules/consultancy-save/consultancy-save.component';
-import { ConsultancyListComponent } from './modules/consultancy-list/consultancy-list.component';
-import { ConvocationConsultComponent } from './modules/convocation-consult/convocation-consult.component';
-import { ReviewReportComponent } from './modules/review-report/review-report.component';
-import { ConvocationApprovalsComponent } from './modules/convocation-approvals/convocation-approvals.component';
-import { StatsComponent } from './modules/stats/stats.component';
-import { ScheduleAssignmentComponent } from './modules/schedule-assignment/schedule-assignment.component';
-import { ProfileComponent } from './modules/profile/profile.component';
+import { HomeComponent } from './modules/views/home/home.component';
+import { UploadReportComponent } from './modules/views/upload-report/upload-report.component';
+import { UploadStudentsComponent } from './modules/views/upload-students/upload-students.component';
+import { RegisterCoordinatorComponent } from './modules/views/register-coordinator/register-coordinator.component';
+import { UploadCoursesComponent } from './modules/views/upload-courses/upload-courses.component';
+import { EnrollmentAcademicFriendComponent } from './modules/views/enrollment-academic-friend/enrollment-academic-friend.component';
+import { AcademicFriendsComponent } from './modules/views/academic-friends/academic-friends.component';
+import { ConvocationCreateComponent } from './modules/views/convocation-create/convocation-create.component';
+import { ConsultancySaveComponent } from './modules/views/consultancy-save/consultancy-save.component';
+import { ConsultancyListComponent } from './modules/views/consultancy-list/consultancy-list.component';
+import { ConvocationConsultComponent } from './modules/views/convocation-consult/convocation-consult.component';
+import { ReviewReportComponent } from './modules/views/review-report/review-report.component';
+import { ConvocationApprovalsComponent } from './modules/views/convocation-approvals/convocation-approvals.component';
+import { StatsComponent } from './modules/views/stats/stats.component';
+import { ScheduleAssignmentComponent } from './modules/views/schedule-assignment/schedule-assignment.component';
+import { ProfileComponent } from './modules/views/profile/profile.component';
 
 const routes: Routes = [
   { path:'', redirectTo:'/login', pathMatch:'full'},

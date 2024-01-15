@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './core/core.module';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
-import { HomeComponent } from './modules/home/home.component';
+import { HomeComponent } from './modules/views/home/home.component';
 import { StatsCardComponent } from './shared/components/stats-card/stats-card.component';
 import { LayoutsModule } from './layouts/layouts.module';
 import { AppModulesModule } from './modules/app-modules.module';

@@ -41,8 +41,13 @@ export class ReportCardComponent {
       }
     })
   }
-  openDialogCorrectReport(reportId:number){
+  openDialogCorrectReport(reportId:number,data:any){
     const formData = UPDATE_REPORT_AACA
+    const objToChangeState = {
+      id:reportId,
+      observations: data.observations,
+      state:'pending'
+    }
     this.dialogService.openDynamicDialog('Corregir informe de asesorias', formData)
       .afterClosed()
       .subscribe((res:any) => {
@@ -50,7 +55,8 @@ export class ReportCardComponent {
           return
         }
         const file:File = res.file
-          this.correctReportService(reportId,file)
+        this.correctReportService(reportId,file)
+        this.qualifyReportService(objToChangeState)
       });
   }
 
