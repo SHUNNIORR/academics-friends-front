@@ -60,8 +60,13 @@ export class LoginComponent {
         localStorage.setItem("code",res.code)
         this.coreService.showMessage('Bienvenido a Amigos a acádemicos');
       },
-      error: () => {
-        this.coreService.showMessage('Hubo un error');
+      error: (err:any) => {
+        if(err.status === 401) {
+          this.coreService.showMessage('Credenciales no válidas, por favor verifíquelas');
+        }else{
+          this.coreService.showMessage('Hubo un error:'+err.error.message);
+        }
+        
       } });
     // Implementar lógica adicional según tus necesidades
   }

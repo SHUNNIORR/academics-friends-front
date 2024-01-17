@@ -84,6 +84,7 @@ export const FIND_CONSULTANCY_BY_SEMESTER: DynamicFormData = {
 export const TABLE_COLUMNS_NAME_CONSULTANCY = [
   { label: 'Amigo académico', key: 'academicFriendEmail' },
   { label: 'Código estudiante', key: 'studentCode' },
+  {label:'Nombre del estudiante', key: 'studentName'},
   { label: 'Curso', key: 'courseName' },
   { label: 'Inicio', key: 'startDate' },
   { label: 'Fin', key: 'endDate' },

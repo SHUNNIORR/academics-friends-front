@@ -7,6 +7,7 @@
                     <div class="content">
                         <h2>Asesorias por cursos del semestre</h2>
                         {{semester}}
+                        <p *ngIf="allConsultancyTableData.length>0">Total asesorias: <b>{{allConsultancyTableData.length}}</b></p>
                         <div style="width: 800px;">
                             <canvas id="consultancyXcourses"></canvas>
                         </div>
@@ -27,6 +28,7 @@
                         <h2>Asesorias por curso</h2>
                         <app-dinamic-form [formData]="searchCourseByName" (formSubmit)="getConsultancyByCourse($event)"></app-dinamic-form>
                         <p>{{courseName}}</p>
+                        <p *ngIf="dataxcourse.length>0">Total asesorias: <b>{{dataxcourse.length}}</b></p>
                         <div *ngIf="dataxcourse.length>0"  style="width: 800px;">
                             <canvas id="consultancyXcourse"></canvas>
                         </div>
@@ -46,6 +48,7 @@
                     <div class="content">
                         <h2>Asesorias por amigo académico</h2>
                          <app-dinamic-form [formData]="searchAcademicFriendByEmail" (formSubmit)="getConsultancyByAf($event)"></app-dinamic-form>
+                         <p *ngIf="dataxaf.length>0">Total asesorias: <b>{{dataxaf.length}}</b></p>
                         <div *ngIf="dataxaf.length>0" style="width: 800px;">
                             <canvas id="consultancyXaf"></canvas>
                         </div>

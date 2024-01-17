@@ -13,11 +13,8 @@ import { AppRoutingModule } from '../app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import { LoginComponent } from './auth/login/login.component';
-import { DinamicFormComponent } from '../shared/components/dinamic-form/dinamic-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
-import { AuthInterceptor } from './interceptors/auth.interceptor';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 @NgModule({
@@ -48,12 +45,5 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     RouterModule,
     SharedModule
   ],
-  // providers: [
-  //   {
-  //     provide: HTTP_INTERCEPTORS,
-  //     useClass: AuthInterceptor,
-  //     multi: true,
-  //   },
-  // ],
 })
 export class CoreModule { }
