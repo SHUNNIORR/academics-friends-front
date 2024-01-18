@@ -75,7 +75,7 @@ export const ENABLE_SCHEDULE: DynamicFormData = {
     },
     {
       key: 'day',
-      label: 'Hora de inicio',
+      label: 'Dia',
       type: 'select',
       required: true,
       validations: [Validators.required],
@@ -159,6 +159,11 @@ export const ASSIGN_MY_SCHEDULE: DynamicFormData = {
     },
   ],
   buttonLabel: 'Si, asignar',
+};
+export const CANCEL_MY_SCHEDULE: DynamicFormData = {
+  fields: [
+  ],
+  buttonLabel: 'Si, cancelar',
 };
 export const TABLE_COLUMNS_ASSIGN_SCHEDULE = [
   { label: 'Id', key: 'id' },

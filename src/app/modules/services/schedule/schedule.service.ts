@@ -24,4 +24,7 @@ export class ScheduleService {
   assignSchedule(replyObj:any){
     return this.http.post(`${this.API_URL}/schedule/add-academic-friend`,replyObj)
   }
+  cancelSchedule(replyObj:any){
+    return this.http.post(`${this.API_URL}/schedule/remove-academic-friend`,replyObj)
+  }
 }

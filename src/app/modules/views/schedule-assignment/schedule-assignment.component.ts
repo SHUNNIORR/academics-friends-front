@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ASSIGN_MY_SCHEDULE, ASSIGN_SCHEDULE, ENABLE_SCHEDULE, REPLY_ASSIGN_SCHEDULE, TABLE_COLUMNS_ASSIGN_SCHEDULE, optionsTableAssignmentSchedule, tuObjetoConDatos } from '../../metadata/schedule-assignment/shedule-assignment';
+import { ASSIGN_MY_SCHEDULE, ASSIGN_SCHEDULE, CANCEL_MY_SCHEDULE, ENABLE_SCHEDULE, REPLY_ASSIGN_SCHEDULE, TABLE_COLUMNS_ASSIGN_SCHEDULE, optionsTableAssignmentSchedule, tuObjetoConDatos } from '../../metadata/schedule-assignment/shedule-assignment';
 import { CoreService } from 'src/app/core/services/core/core.service';
 import { ScheduleService } from '../../services/schedule/schedule.service';
 import { DialogService } from 'src/app/shared/services/dialog/dialog.service';
@@ -84,7 +84,8 @@ export class ScheduleAssignmentComponent {
   }
   handleCustomEvent(event:any){
     if(event.action=='cancel'){
-      console.log('cancel')
+      console.log('cancel',event)
+      this.openDialogCancelSchedule(event)
     }else{
       this.openDialogAssignSchedule(event);
     }
@@ -111,6 +112,25 @@ export class ScheduleAssignmentComponent {
         this.assignmentScheduleService(objToAssignAchedule)
       });
   }
+  openDialogCancelSchedule(data:any){
+    const formData = CANCEL_MY_SCHEDULE
+    this.dialogService.openDynamicDialog(`¿Está seguro de cancelar la asignación?`, formData)
+      .afterClosed()
+      .subscribe((res:any) => {
+        if(res == ''){
+          return
+        }
+        const endHour = Number(data.hourObject.hour.split(':')[0])+1
+        const objToAssignAchedule = {
+          academicFriendEmail: localStorage.getItem('email'),
+          day: data.day,
+          startHour: data.hourObject.hour,
+          endHour: `${endHour>9?'':'0'}${endHour}:00` 
+        }
+        console.log('cancel',objToAssignAchedule)
+        this.cancelScheduleService(objToAssignAchedule)
+      });
+  }
   openDialogReplyAssignment(data:any){
     const formData = REPLY_ASSIGN_SCHEDULE
     this.dialogService.openDynamicDialog('Aprobar estudiante', formData)
@@ -135,6 +155,18 @@ export class ScheduleAssignmentComponent {
       },
       error:(err:any)=>{
         this.coreService.showMessage('Sucedió un error asignando el horario: '+err.error.message)
+      } 
+    })
+  }
+  cancelScheduleService(replyObj:any){
+    this.scheduleService.cancelSchedule(replyObj).subscribe({
+      next:(res:any)=>{  
+        this.coreService.showMessage('Horario cancelado con éxito')
+        this.getScheduleByEmail()
+        this.getAllSchedule();
+      },
+      error:(err:any)=>{
+        this.coreService.showMessage('Sucedió un error cancelando el horario: '+err.error.message)
       } 
     })
   }
@@ -181,7 +213,7 @@ export class ScheduleAssignmentComponent {
 
     const horaMaxima:string = `${Number(horaActual.split(':')[0])+4}:00`
     console.log(horaMaxima)
-    while (horaActual < horaMaxima) {
+    while (horaActual < horaMaxima && horaActual <= '18:00') {
       horas.push({ value: horaActual, label: horaActual });
       horaActual = this.incrementarHora(horaActual);
     }
