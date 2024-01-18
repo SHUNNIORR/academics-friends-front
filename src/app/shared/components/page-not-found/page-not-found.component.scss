@@ -1,0 +1,16 @@
+.container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 7vh;
+    height: 100vh;
+    margin: 0 auto;
+    justify-content: center;
+    background: rgb(251,8,8);
+    background: linear-gradient(205deg, rgba(251,8,8,1) 0%, rgba(198,40,40,1) 48%, rgba(92,19,19,1) 100%);
+    
+}
+h1{
+    color: white;
+}

@@ -8,10 +8,11 @@
         <p><b>{{ hour.hour }}</b></p>
         <p >{{ transformAcademicFriends(hour.academicFriends).join(', ') }}</p>
         <p><b>{{ hour.classroom }}</b> </p>
-        <button class="assign-button" *ngIf="assignCalendar &&  hour.classroom != null && !alreadyAssigned(hour.academicFriends)" (click)="emittEvent(hour,day.day)"> <mat-icon>event_upcoming</mat-icon></button>
+        <button class="assign-button" title="Asignarme horario" *ngIf="assignCalendar &&  hour.classroom != null && !alreadyAssigned(hour.academicFriends)" (click)="emittEvent(hour,day.day)"> <mat-icon>event_upcoming</mat-icon></button>
+        <button class="cancel-button"  title="Cancelar asignación" *ngIf="assignCalendar && alreadyAssigned(hour.academicFriends)" (click)="cancelSchedule(hour,day.day)"> <mat-icon>
+          delete_forever</mat-icon></button>
       </div>
     </div>
-   
 </div>
 <ng-template #elseTemplate>
   <p>No hay información para mostrar</p>

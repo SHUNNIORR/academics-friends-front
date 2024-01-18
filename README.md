@@ -179,9 +179,25 @@ La aplicación web de Amigos Académicos IS proporciona las siguientes funcional
 - Registro de informes: Los amigos académicos pueden registrar informes sobre las sesiones de asesoría que realizan con
   los estudiantes.
 
+## Pruebas  ##
 
+Para ejecutar pruebas unitarias puedes usar el comando
+```
+ng test
+``` 
 
-    ## Contribución ##
+Para ejecutar pruebas sobre un archivo .spec en concreto
+
+```
+ng test --include='ruta_del_archivo_de_pruebas'
+```
+Para generar la covertura
+```
+ng test --code-coverage
+```
+esto creará una carpeta llamada coverage donde si la abres verás un index.html con el cual podrás revisar la covertura del aplicativo
+
+## Contribución ##
 
 Cualquier contribución al proyecto es bienvenida. Si deseas informar un error, solicitar una nueva funcionalidad o
 contribuir con código, sigue estos pasos:

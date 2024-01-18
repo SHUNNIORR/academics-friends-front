@@ -83,7 +83,11 @@ export class ScheduleAssignmentComponent {
     })
   }
   handleCustomEvent(event:any){
-    this.openDialogAssignSchedule(event);
+    if(event.action=='cancel'){
+      console.log('cancel')
+    }else{
+      this.openDialogAssignSchedule(event);
+    }
   }
   enableSchedule(event:any){
     console.log(event)
@@ -175,7 +179,9 @@ export class ScheduleAssignmentComponent {
     const horas = [];
     let horaActual = this.incrementarHora(horaInicial);
 
-    while (horaActual <= '18:00') {
+    const horaMaxima:string = `${Number(horaActual.split(':')[0])+4}:00`
+    console.log(horaMaxima)
+    while (horaActual < horaMaxima) {
       horas.push({ value: horaActual, label: horaActual });
       horaActual = this.incrementarHora(horaActual);
     }

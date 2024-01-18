@@ -30,7 +30,7 @@ export class CalendarComponent {
   }
   completeHoursArray() {
     const startHour = 6;
-    const endHour = 18;
+    const endHour = 17;
 
     this.scheduleData.days.forEach((day:any) => {
       const existingHours = day.hours.map((hour:any) => hour.hour.substring(0, 5));
@@ -77,6 +77,15 @@ export class CalendarComponent {
     const emitObj = {
       hourObject: hourObject,
       day: day
+    }
+    this.optionsButtonClick.emit(emitObj)
+  }
+
+  cancelSchedule(hourObject:any, day:string){
+    const emitObj = {
+      hourObject: hourObject,
+      day: day,
+      action:'cancel'
     }
     this.optionsButtonClick.emit(emitObj)
   }
