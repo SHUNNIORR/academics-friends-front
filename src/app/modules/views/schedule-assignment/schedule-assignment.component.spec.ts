@@ -6,7 +6,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePipe } from '@angular/common';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { AppModule } from 'src/app/app.module';
 import { ScheduleService } from '../../services/schedule/schedule.service';
 import { DialogService } from 'src/app/shared/services/dialog/dialog.service';
@@ -217,5 +217,44 @@ describe('ScheduleAssignmentComponent', () => {
     const expected = 'Día no válido';
 
     expect(result).toEqual(expected);
+  });
+  it('should handle custom event with action "cancel"', () => {
+    const eventData = { action: 'cancel', hourObject: { hour: '10:00' } }; 
+
+    const dialogRefMock: Partial<MatDialogRef<any, any>> = {
+      afterClosed: () => of(eventData)
+    };
+    spyOn(console, 'log')
+    spyOn(dialogService, 'openDynamicDialog').and.returnValue(dialogRefMock as MatDialogRef<any, any>);
+    
+    component.handleCustomEvent(eventData);
+    // Verifica que se haya llamado a la función correspondiente
+    expect(dialogService.openDynamicDialog).toHaveBeenCalledWith(jasmine.any(String), jasmine.any(Object));
+    //expect(console.log).not.toHaveBeenCalled(); // Asegúrate de que no se haya llamado a console.log
+  });
+
+  it('should handle custom event with action other than "cancel"', () => {
+    const eventData = { action: 'other', hourObject: { hour: '10:00' } }; // No hourObject property here
+    const dialogRefMock: Partial<MatDialogRef<any, any>> = {
+      afterClosed: () => of(eventData)
+    };
+    spyOn(console, 'log')
+    spyOn(dialogService, 'openDynamicDialog').and.returnValue(dialogRefMock as MatDialogRef<any, any>);
+    component.handleCustomEvent(eventData);
+    // Verifica que se haya llamado a la función correspondiente
+    expect(dialogService.openDynamicDialog).toHaveBeenCalledWith(jasmine.any(String), jasmine.any(Object));
+    //expect(console.log).not.toHaveBeenCalled(); // Asegúrate de que no se haya llamado a console.log
+  });
+
+  it('should handle enable schedule event', () => {
+    const eventData = { /* other properties */ };
+
+    spyOn(console,'log')
+    spyOn(dialogService,'openDynamicDialog');
+    component.enableSchedule(eventData);
+
+    // Verifica que se h  spyOn(dialogService,'openDynamicDialog');
+    expect(console.log).toHaveBeenCalledWith(eventData); // Ajusta según la estructura de tu objeto
+    expect(dialogService.openDynamicDialog).not.toHaveBeenCalled(); // Asegúrate de que no se haya llamado a openDynamicDialog
   });
 });
