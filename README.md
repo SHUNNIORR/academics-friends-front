@@ -190,6 +190,8 @@ Para ejecutar pruebas sobre un archivo .spec en concreto
 
 ```
 ng test --include='ruta_del_archivo_de_pruebas'
+
+ng test --include= ruta_relativa_del_archivo_de_pruebas
 ```
 Para generar la covertura
 ```
