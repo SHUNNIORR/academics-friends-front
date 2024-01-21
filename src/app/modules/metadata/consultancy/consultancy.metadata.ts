@@ -50,7 +50,7 @@ export const SAVE_CONSULTANCY: DynamicFormData = {
       validations: [Validators.required],
     },
   ],
-  buttonLabel: 'Registrar coordinador',
+  buttonLabel: 'Registrar asesoría',
 };
 
 export const FIND_CONSULTANCY_BY_COURSE: DynamicFormData = {

@@ -67,6 +67,7 @@ export class AcademicFriendsComponent {
           this.findAFByCodetableData=[]
           this.coreService.showMessage('No se encontró el amigo académico: '+code)
         }else{
+          this.findAFByCodetableData=[]
           this.findAFByCodetableData.push(res);
         }
       },
