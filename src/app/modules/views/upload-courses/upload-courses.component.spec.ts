@@ -61,7 +61,7 @@ describe('UploadCoursesComponent', () => {
     // Arrange
     const file = new File([""], "validFile.csv");
     spyOn(coursesService, 'createCourses').and.returnValue(
-      throwError({message:'error'})
+      throwError({error:{message:'error'}})
     );
     spyOn(coreService, 'showMessage');
 

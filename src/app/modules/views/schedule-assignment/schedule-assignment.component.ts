@@ -51,7 +51,7 @@ export class ScheduleAssignmentComponent {
         this.getScheduleService();
       },
       error:(err:any)=>{
-        this.coreService.showMessage('Sucedió un error al asignar horario: '+err.error.message)
+        this.coreService.showMessage(''+err.error.message)
       } 
     })
   }

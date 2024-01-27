@@ -69,7 +69,7 @@ describe('ProfileComponent', () => {
   it('getUserInfo error',()=>{
     spyOn(coreService,'showMessage')
     spyOn(academicFriendsService,'getAcademicFriendByEmail').and.returnValue(
-      throwError({message:'error'})
+      throwError({error:{message:'error'}})
     )
     component.getUserInfo('example@ufps.edu.co')
     expect(academicFriendsService.getAcademicFriendByEmail).toHaveBeenCalled();

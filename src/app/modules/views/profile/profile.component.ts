@@ -31,8 +31,8 @@ export class ProfileComponent {
           this.coreService.showMessage("No se encontró ningún estudiante")
         }
       },
-      error: (error: Error) => {
-        console.log('error', error.message);
+      error: (err: any) => {
+        console.log('error', err.error.message);
       },
     });
   }

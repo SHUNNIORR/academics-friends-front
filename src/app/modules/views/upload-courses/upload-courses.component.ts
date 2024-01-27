@@ -25,8 +25,8 @@ export class UploadCoursesComponent {
       next:(res:any)=>{
         this.coreService.showMessage("Cursos cargados con exito")
       },
-      error:(error:Error)=>{
-        this.coreService.showMessage(`Error creando cursos: ${error.message}`)
+      error:(err:any)=>{
+        this.coreService.showMessage(`Error creando cursos: ${err.error.message}`)
       }
     })
   }

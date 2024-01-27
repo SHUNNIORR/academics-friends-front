@@ -50,7 +50,7 @@ describe('UploadStudentsComponent', () => {
     spyOn(
       studentsService,
       'searchStudent'
-    ).and.returnValue(throwError({ message: 'error' }));
+    ).and.returnValue(throwError({error:{message: 'error' }}));
     component.searchStudentService('1');
   });
   it('createStudents', () => {
@@ -65,7 +65,7 @@ describe('UploadStudentsComponent', () => {
     spyOn(
       studentsService,
       'createStudents'
-    ).and.returnValue(throwError({ message: 'error' }));
+    ).and.returnValue(throwError({error:{message: 'error' }}));
     component.createStudents(new File([],''));
   });
   it('onFormSubmit', () => {

@@ -34,8 +34,8 @@ export class UploadStudentsComponent {
           this.coreService.showMessage("No se encontró ningún estudiante")
         }
       },
-      error: (error: Error) => {
-        console.log('error', error.message);
+      error: (err: any) => {
+        console.log('error', err.error.message);
       },
     });
   }
@@ -44,9 +44,9 @@ export class UploadStudentsComponent {
       next: (res: any) => {
         this.coreService.showMessage('Estudiantes cargados con exito');
       },
-      error: (error: Error) => {
+      error: (err: any) => {
         this.coreService.showMessage(
-          `Error cargando Estudiantes: ${error.message}`
+          `Error cargando Estudiantes: ${err.error.message}`
         );
       },
     });
