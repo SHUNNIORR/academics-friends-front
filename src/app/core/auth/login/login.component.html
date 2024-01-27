@@ -1,12 +1,12 @@
 <section class="container">
     <div class="container__form" [style]="esDispositivoMovil?'width:100%':''">
         <img src="../../../../assets/logo_red.svg" width="100" height="100">
-        <h1>Ingresa a Amigos académicos</h1>
+        <h1>Ingresa a Amigos académicos IS</h1>
         <app-dinamic-form [formData]="formConfig" (formSubmit)="onFormSubmit($event)"></app-dinamic-form>
     </div>
     <div *ngIf="!esDispositivoMovil" class="container__presentation">
         <img src="../../../../assets/logo.svg" width="300" height="300">
-        <p class="container__presentation__title">PORTAL DE <BR>AMIGOS ACADÉMICOS</p>
+        <p class="container__presentation__title">PORTAL DE <BR>AMIGOS ACADÉMICOS IS</p>
         <p class="container__presentation__description">
             Aquí podrás registrar tus asesorías, cargar y generar informes, ver estadísticas, aplicar a convocatorias y
             trabajar con todo lo relacionado a los amigos académicos

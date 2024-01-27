@@ -43,6 +43,18 @@ export const UPDATE_REPORT_AACA: DynamicFormData = {
   ],
   buttonLabel: 'Corregir informe',
 };
+export const UPDATE_REPORT_FORMAT: DynamicFormData = {
+  fields: [
+    {
+      key: 'file',
+      label: 'Subir formato de informe',
+      type: 'file',
+      filesAccepted:'application/pdf, .pdf',
+      validations: [Validators.required],
+    },
+  ],
+  buttonLabel: 'Cargar',
+};
 export const QUALIFY_REPORT_AACA: DynamicFormData = {
   fields: [
     {

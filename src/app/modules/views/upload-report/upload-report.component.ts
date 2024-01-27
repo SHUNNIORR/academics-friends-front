@@ -7,6 +7,7 @@ import { DatePipe } from '@angular/common';
 import { CoreService } from 'src/app/core/services/core/core.service';
 import { ReportService } from '../../services/report/report.service';
 import { Subscription } from 'rxjs';
+import { FileService } from '../../services/file/file.service';
 
 @Component({
   selector: 'app-upload-report',
@@ -22,7 +23,8 @@ export class UploadReportComponent {
   constructor(
     private datePipe: DatePipe,
     private coreService: CoreService,
-    private reportService: ReportService
+    private reportService: ReportService,
+    private fileService:FileService,
   ) {
     this.reportUpdatedSubscription = this.reportService.onReportUpdated().subscribe(() => {
       this.getReportsByAcademicFriend()
@@ -71,5 +73,25 @@ export class UploadReportComponent {
   }
   formatDate(date: Date) {
     return this.datePipe.transform(date, 'yyyy-MM-ddTHH:mm:ss');
+  }
+  dowloadReportFormat(fileUrl:string){
+    this.fileService.downloadFile(fileUrl).subscribe({
+      next:blob => {
+        const file = new Blob([blob], { type: 'application/octet-stream' });
+
+        // Crear un enlace temporal y simular un clic para descargar el archivo
+        const url = window.URL.createObjectURL(file);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${fileUrl}`; // Puedes establecer el nombre del archivo aquí
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        this.coreService.showMessage("Archivo descargado con éxito")
+      },
+      error:(err:any)=>{
+        this.coreService.showMessage('Hubo un error descargando el archivo:'+ err.message);
+      }
+    })
   }
 }
