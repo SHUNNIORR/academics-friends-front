@@ -5,8 +5,12 @@
         <app-dinamic-form [formData]="formConfig" (formSubmit)="onFormSubmit($event)"></app-dinamic-form>
     </div>
     <div *ngIf="!esDispositivoMovil" class="container__presentation">
-        <img src="../../../../assets/logo.svg" width="300" height="300">
-        <p class="container__presentation__title">PORTAL DE <BR>AMIGOS ACADÉMICOS IS</p>
+        <div class="logos-container">
+            <img src="../../../../assets/logo.svg" width="150" >
+            <h2>X</h2>
+            <img  src="../../../../assets/logo_is_blanco.png" width="150">
+        </div>
+        <p class="container__presentation__title">PORTAL DE <BR>AMIGOS ACADÉMICOS</p>
         <p class="container__presentation__description">
             Aquí podrás registrar tus asesorías, cargar y generar informes, ver estadísticas, aplicar a convocatorias y
             trabajar con todo lo relacionado a los amigos académicos

@@ -13,7 +13,11 @@ import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { RouterModule } from '@angular/router';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatDialog, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import {
+  MatDialog,
+  MatDialogModule,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ConsultancyService } from '../../services/consultancy/consultancy.service';
@@ -49,9 +53,14 @@ describe('AcademicFriendsComponent', () => {
         SharedModule,
       ],
       providers: [
-        { provide: MatDialog, useValue: jasmine.createSpyObj('MatDialog', ['open', 'openDynamicDialog']) }
-      ]
-
+        {
+          provide: MatDialog,
+          useValue: jasmine.createSpyObj('MatDialog', [
+            'open',
+            'openDynamicDialog',
+          ]),
+        },
+      ],
     });
     fixture = TestBed.createComponent(AcademicFriendsComponent);
     consultancyService = TestBed.inject(ConsultancyService);
@@ -231,7 +240,7 @@ describe('AcademicFriendsComponent', () => {
 
     expect(component.openDialogUploadContract).toHaveBeenCalledWith(event);
   });
-//---FUNCION DE DESCARGAR ARCHIVO
+  //---FUNCION DE DESCARGAR ARCHIVO
   it('should download a file successfully', async () => {
     // Arrange
     const fileUrl = 'example.com/download/file';
@@ -268,7 +277,7 @@ describe('AcademicFriendsComponent', () => {
     const errorMessage = 'API call failed';
     const fileUrl = 'example.com/download/file';
     spyOn(fileService, 'downloadFile').and.returnValue(
-      throwError({ message: errorMessage})
+      throwError({ message: errorMessage })
     );
     const showMessageSpy = spyOn(coreService, 'showMessage');
     component.downloadFileService(fileUrl);
@@ -278,56 +287,77 @@ describe('AcademicFriendsComponent', () => {
     );
   });
 
-      // Opens a dialog with the title 'Cargar contrato' and a form containing a file input field labeled 'Cargar contrato'
-      it('should call uploadContractStudentService when dialog is closed with a non-empty result', () => {
-        // Configuración del espía para que devuelva un valor específico
-        const dialogRefMock: Partial<MatDialogRef<any, any>> = {
-          afterClosed: () => of({ contract: 'path/to/contract' })
-        };
-        spyOn(dialogService,'openDynamicDialog').and.returnValue(dialogRefMock as MatDialogRef<any, any>)
-        spyOn(component, 'uploadContractStudentService')
-        // Llamar a la función que se va a probar
-        component.openDialogUploadContract({ element: { email: 'test@example.com' } });
-    
-        // Verificar que se llamó a la función esperada
-        expect(component.uploadContractStudentService).toHaveBeenCalledWith('path/to/contract', 'test@example.com');
-      });
-      it('should call uploadContractStudentService when dialog is closed with a non-empty result', () => {
-        // Configuración del espía para que devuelva un valor específico
-        const dialogRefMock: Partial<MatDialogRef<any, any>> = {
-          afterClosed: () => of('')
-        };
-        spyOn(dialogService,'openDynamicDialog').and.returnValue(dialogRefMock as MatDialogRef<any, any>)
-        spyOn(component, 'uploadContractStudentService')
-        // Llamar a la función que se va a probar
-        component.openDialogUploadContract({ element: { email: 'test@example.com' } });
-    
-        // Verificar que se llamó a la función esperada
-        expect(component.uploadContractStudentService).not.toHaveBeenCalled();
-      });
+  // Opens a dialog with the title 'Cargar contrato' and a form containing a file input field labeled 'Cargar contrato'
+  it('should call uploadContractStudentService when dialog is closed with a non-empty result', () => {
+    // Configuración del espía para que devuelva un valor específico
+    const dialogRefMock: Partial<MatDialogRef<any, any>> = {
+      afterClosed: () => of({ contract: 'path/to/contract' }),
+    };
+    spyOn(dialogService, 'openDynamicDialog').and.returnValue(
+      dialogRefMock as MatDialogRef<any, any>
+    );
+    spyOn(component, 'uploadContractStudentService');
+    // Llamar a la función que se va a probar
+    component.openDialogUploadContract({
+      element: { email: 'test@example.com' },
+    });
 
-      it('should handle successful contract upload', () => {
-        // Configuración del espía para que devuelva un observable con éxito
-        spyOn(academicFriendService,'uploadContract').and.returnValue(of('success'));
-        spyOn(component,'getAllAcademicFriends')
-        spyOn(coreService,'showMessage')
-        // Llamar a la función que se va a probar
-        component.uploadContractStudentService('path/to/contract', 'test@example.com');
-    
-        // Verificar que se llamó a las funciones esperadas
-        expect(component.getAllAcademicFriends).toHaveBeenCalled();
-        expect(coreService.showMessage).toHaveBeenCalledWith('Contrato cargado con éxito');
-      });
-      it('should show error message after wont be able to upload a contract', () => {
-        const errorResponse = { error: { message: 'Error uploading contract' } };
-        spyOn(academicFriendService, 'uploadContract').and.returnValue(
-          throwError(errorResponse)
-        );
-        const showMessageSpy = spyOn(coreService, 'showMessage');
-        component.uploadContractStudentService('path/to/contract', 'test@example.com');
-    
-        expect(showMessageSpy).toHaveBeenCalledWith(
-          'Hubo un error al cargar el contrato:Error uploading contract'
-        );
-      });
+    // Verificar que se llamó a la función esperada
+    expect(component.uploadContractStudentService).toHaveBeenCalledWith(
+      'path/to/contract',
+      'test@example.com'
+    );
+  });
+  it('should call uploadContractStudentService when dialog is closed with a non-empty result', () => {
+    // Configuración del espía para que devuelva un valor específico
+    const dialogRefMock: Partial<MatDialogRef<any, any>> = {
+      afterClosed: () => of(''),
+    };
+    spyOn(dialogService, 'openDynamicDialog').and.returnValue(
+      dialogRefMock as MatDialogRef<any, any>
+    );
+    spyOn(component, 'uploadContractStudentService');
+    // Llamar a la función que se va a probar
+    component.openDialogUploadContract({
+      element: { email: 'test@example.com' },
+    });
+
+    // Verificar que se llamó a la función esperada
+    expect(component.uploadContractStudentService).not.toHaveBeenCalled();
+  });
+
+  it('should handle successful contract upload', () => {
+    // Configuración del espía para que devuelva un observable con éxito
+    spyOn(academicFriendService, 'uploadContract').and.returnValue(
+      of('success')
+    );
+    spyOn(component, 'getAllAcademicFriends');
+    spyOn(coreService, 'showMessage');
+    // Llamar a la función que se va a probar
+    component.uploadContractStudentService(
+      'path/to/contract',
+      'test@example.com'
+    );
+
+    // Verificar que se llamó a las funciones esperadas
+    expect(component.getAllAcademicFriends).toHaveBeenCalled();
+    expect(coreService.showMessage).toHaveBeenCalledWith(
+      'Contrato cargado con éxito'
+    );
+  });
+  it('should show error message after wont be able to upload a contract', () => {
+    const errorResponse = { error: { message: 'Error uploading contract' } };
+    spyOn(academicFriendService, 'uploadContract').and.returnValue(
+      throwError(errorResponse)
+    );
+    const showMessageSpy = spyOn(coreService, 'showMessage');
+    component.uploadContractStudentService(
+      'path/to/contract',
+      'test@example.com'
+    );
+
+    expect(showMessageSpy).toHaveBeenCalledWith(
+      'Hubo un error al cargar el contrato:Error uploading contract'
+    );
+  });
 });

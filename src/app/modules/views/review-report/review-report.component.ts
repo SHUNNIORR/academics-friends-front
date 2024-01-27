@@ -16,48 +16,6 @@ export class ReviewReportComponent {
   formConfig: DynamicFormData = CREATE_REPORT;
   userEmail: string | null = null;
   reports: ReportResponse[] = []
-  // reports: ReportResponse[] = [
-  //   {
-  //     id: 6,
-  //     academicFriendEmail: 'prueba1@ufps.edu.co',
-  //     type: 'monthly',
-  //     observations: null,
-  //     state: 'pending',
-  //     date: new Date('2024-01-02T00:00'),
-  //     uploadDate: new Date('2024-01-02T23:58:32.252873'),
-  //     file: 'report/28371b4c-05f7-49e1-a55b-a8ab845b3a97.pdf',
-  //   },
-  //   {
-  //     id: 7,
-  //     academicFriendEmail: 'prueba1@ufps.edu.co',
-  //     type: 'monthly',
-  //     observations: null,
-  //     state: 'withCorrections',
-  //     date: new Date('2024-01-02T00:00'),
-  //     uploadDate: new Date('2024-01-02T23:58:32.252873'),
-  //     file: 'report/28371b4c-05f7-49e1-a55b-a8ab845b3a97.pdf',
-  //   },
-  //   {
-  //     id: 8,
-  //     academicFriendEmail: 'prueba1@ufps.edu.co',
-  //     type: 'monthly',
-  //     observations: null,
-  //     state: 'pass',
-  //     date: new Date('2024-01-02T00:00'),
-  //     uploadDate: new Date('2024-01-02T23:58:32.252873'),
-  //     file: 'report/28371b4c-05f7-49e1-a55b-a8ab845b3a97.pdf',
-  //   },
-  //   {
-  //     id: 9,
-  //     academicFriendEmail: 'prueba1@ufps.edu.co',
-  //     type: 'final',
-  //     observations: null,
-  //     state: 'rejected',
-  //     date: new Date('2024-01-02T00:00'),
-  //     uploadDate: new Date('2024-01-02T23:58:32.252873'),
-  //     file: 'report/28371b4c-05f7-49e1-a55b-a8ab845b3a97.pdf',
-  //   },
-  // ];
 
   constructor(
     private datePipe: DatePipe,

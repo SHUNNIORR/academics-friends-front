@@ -7,36 +7,38 @@ import { FileService } from '../../services/file/file.service';
 @Component({
   selector: 'app-consultancy-list',
   templateUrl: './consultancy-list.component.html',
-  styleUrls: ['./consultancy-list.component.scss']
+  styleUrls: ['./consultancy-list.component.scss'],
 })
 export class ConsultancyListComponent {
-  tableData:any[] = [];
-  columnNames:any[] = TABLE_COLUMNS_NAME_CONSULTANCY;
+  tableData: any[] = [];
+  columnNames: any[] = TABLE_COLUMNS_NAME_CONSULTANCY;
   email = localStorage.getItem('email');
- 
-  constructor(private coreService:CoreService,private consultancyService: ConsultancyService, private fileService:FileService){
 
+  constructor(
+    private coreService: CoreService,
+    private consultancyService: ConsultancyService,
+    private fileService: FileService
+  ) {}
+
+  ngOnInit() {
+    this.getAllConsultancy();
   }
 
-  ngOnInit(){
-    this.getAllConsultancy()
-  }
-
-  getAllConsultancy(){
-    if(this.email){
+  getAllConsultancy() {
+    if (this.email) {
       this.consultancyService.getAllConsultancyByEmail(this.email).subscribe({
-        next:(res:any)=>{
-          this.tableData=res;
+        next: (res: any) => {
+          this.tableData = res;
         },
-        error:(err:any)=>{
-          this.coreService.showMessage('Hubo un error: ' + err.error.message)
-        }
-      })
+        error: (err: any) => {
+          this.coreService.showMessage('Hubo un error: ' + err.error.message);
+        },
+      });
     }
   }
-  downloadConsultancies(fileArray:any,nombre:string){
+  downloadConsultancies(fileArray: any, nombre: string) {
     this.fileService.convertFile(fileArray).subscribe({
-      next:(blob)=>{
+      next: (blob) => {
         const file = new Blob([blob], { type: 'application/octet-stream' });
 
         // Crear un enlace temporal y simular un clic para descargar el archivo
@@ -49,7 +51,7 @@ export class ConsultancyListComponent {
         document.body.removeChild(a);
         this.coreService.showMessage('Archivo descargado con éxito');
       },
-      error:()=>{}
-    })
+      error: () => {},
+    });
   }
 }

@@ -41,7 +41,7 @@ const routes: Routes = [
       { path: 'amigos-academicos',  component: AcademicFriendsComponent, canActivate:[authGuardGuard], data: { expectedRole: ['coordinator','director'] }},
       { path: 'informes-revisar',  component: ReviewReportComponent, canActivate:[authGuardGuard], data: { expectedRole: ['coordinator'] }},
       { path: 'asignar-horarios',  component: ScheduleAssignmentComponent, canActivate:[authGuardGuard], data: { expectedRole:['coordinator','academicFriend'] }},
-      { path: 'estadisticas',  component: StatsComponent, canActivate:[authGuardGuard], data: { expectedRole: ['coordinator','academicFriend']}},
+      { path: 'estadisticas',  component: StatsComponent, canActivate:[authGuardGuard], data: { expectedRole: ['coordinator','director']}},
       { path: 'perfil',  component: ProfileComponent, canActivate:[authGuardGuard], data: { expectedRole: ['academicFriend','coordinator','director'] }}
     ]
   },

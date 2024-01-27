@@ -131,21 +131,6 @@ export class ScheduleAssignmentComponent {
         this.cancelScheduleService(objToAssignAchedule)
       });
   }
-  openDialogReplyAssignment(data:any){
-    const formData = REPLY_ASSIGN_SCHEDULE
-    this.dialogService.openDynamicDialog('Aprobar estudiante', formData)
-      .afterClosed()
-      .subscribe((res:any) => {
-        if(res == ''){
-          return
-        }
-         const objToReply = {
-            id:data.element.id,
-            ...res
-          }
-          //this.assignmentAcheduleService(objToReply)
-      });
-  }
   assignmentScheduleService(replyObj:any){
     this.scheduleService.assignSchedule(replyObj).subscribe({
       next:(res:any)=>{  
