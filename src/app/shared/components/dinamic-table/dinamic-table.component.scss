@@ -1,4 +1,7 @@
 .mat-elevation-z8{
+  @media (max-width: 767px) {
+        width: 100vw;
+  }
 }
 .scrollable-table{
   @media (max-width: 767px) {

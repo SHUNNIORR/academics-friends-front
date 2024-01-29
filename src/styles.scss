@@ -25,3 +25,30 @@ body { margin: 0; font-family: 'Poppins', sans-serif; }
 .mat-sort-header-arrow{
     color: white;
 }
+.home{
+    @media (max-width: 767px) {
+        margin: 10px;
+        padding: 10px !important;
+        font-size: small;
+        h1,h3{
+            font-size: x-large !important;
+        }
+    }
+}
+.content{
+    @media (max-width: 767px) {
+        padding: 20px 10px !important;
+        margin: 10px;
+        width: auto;
+    }
+}
+.container{
+    @media (max-width: 767px) {
+        width: 100vw;
+    }
+}
+h2{
+    @media (max-width: 767px) {
+        text-align: center;
+    }
+}

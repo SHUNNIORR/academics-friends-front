@@ -2,6 +2,10 @@
 
 .container {
     width: 400px;
+
+    @media (max-width: 767px) {
+        width: 300px;
+    }
 }
 
 .form {
@@ -27,16 +31,17 @@
                 background-color: gray;
                 cursor: not-allowed;
                 color: rgb(202, 202, 202);
-                &:hover{
+
+                &:hover {
                     box-shadow: none;
                 }
             }
 
             &:hover {
                 cursor: pointer;
-                -webkit-box-shadow: 10px 10px 8px -6px rgba(0,0,0,0.75);
-                -moz-box-shadow: 10px 10px 8px -6px rgba(0,0,0,0.75);
-                box-shadow: 10px 10px 8px -6px rgba(0,0,0,0.75);
+                -webkit-box-shadow: 10px 10px 8px -6px rgba(0, 0, 0, 0.75);
+                -moz-box-shadow: 10px 10px 8px -6px rgba(0, 0, 0, 0.75);
+                box-shadow: 10px 10px 8px -6px rgba(0, 0, 0, 0.75);
             }
         }
     }

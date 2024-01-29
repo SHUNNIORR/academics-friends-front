@@ -8,7 +8,7 @@
                         <h2>Asesorias por cursos del semestre</h2>
                         {{semester}}
                         <p *ngIf="allConsultancyTableData.length>0">Total asesorias: <b>{{allConsultancyTableData.length}}</b></p>
-                        <div style="width: 800px;">
+                        <div  class="canvas-container">
                             <canvas id="consultancyXcourses"></canvas>
                         </div>
                         <app-dinamic-form [formData]="searchConsultanciesBySemester" (formSubmit)="getConsultanciesBySemester($event)"></app-dinamic-form>
@@ -28,8 +28,8 @@
                         <h2>Asesorias por curso</h2>
                         <app-dinamic-form [formData]="searchCourseByName" (formSubmit)="getConsultancyByCourse($event)"></app-dinamic-form>
                         <p>{{courseName}}</p>
-                        <p *ngIf="dataxcourse.length>0">Total asesorias: <b>{{dataxcourse.length}}</b></p>
-                        <div *ngIf="dataxcourse.length>0"  style="width: 800px;">
+                        <p *ngIf="dataxcourse.length>0">Total asesorias: <b>{{allConsultancyByCourseTableData.length}}</b></p>
+                        <div *ngIf="dataxcourse.length>0"  class="canvas-container">
                             <canvas id="consultancyXcourse"></canvas>
                         </div>
                         <!-- <app-dinamic-table *ngIf="consultancyByAFtableData.length>0" [data]="consultancyByAFtableData" [columnsConfig]="consultancyByAFcolumnNames"></app-dinamic-table> -->
@@ -48,8 +48,8 @@
                     <div class="content">
                         <h2>Asesorias por amigo académico</h2>
                          <app-dinamic-form [formData]="searchAcademicFriendByEmail" (formSubmit)="getConsultancyByAf($event)"></app-dinamic-form>
-                         <p *ngIf="dataxaf.length>0">Total asesorias: <b>{{dataxaf.length}}</b></p>
-                        <div *ngIf="dataxaf.length>0" style="width: 800px;">
+                         <p *ngIf="dataxaf.length>0">Total asesorias: <b>{{consultancyByAFtableData.length}}</b></p>
+                        <div *ngIf="dataxaf.length>0" class="canvas-container">
                             <canvas id="consultancyXaf"></canvas>
                         </div>
                         <div  *ngIf="dataxaf.length>0" class="header-buttons">

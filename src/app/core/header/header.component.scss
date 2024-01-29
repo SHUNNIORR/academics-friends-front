@@ -17,5 +17,11 @@
 }
 .left-buttons{
     display: flex;
-    gap:10px
+    gap:10px;
+    @media(max-width: 767px) {
+        gap:0;
+    }
+    button{
+        padding: 0;
+    }
 }

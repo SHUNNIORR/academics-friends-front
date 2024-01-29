@@ -2,9 +2,11 @@
     <div class="content">
         <h2>Informes pendientes de revisión</h2>
         <ng-container *ngIf="reports">
-            <ng-container  *ngFor="let report of reports">
-                <app-report-card [data]="report" [coordinator]="true"></app-report-card>
-            </ng-container>
+            <div class="scrollable">
+                <ng-container  *ngFor="let report of reports">
+                    <app-report-card [data]="report" [coordinator]="true"></app-report-card>
+                </ng-container>
+            </div>
         </ng-container>
     </div>
 </section>

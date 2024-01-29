@@ -35,7 +35,11 @@
             color: $white;
             font-family: 'Poppins', sans-serif;
             border: none;
-
+            @media (max-width: 767px) {
+                width: auto;
+                max-width: 120px;
+                padding: 0 20px;
+            }
             &:disabled {
                 background-color: gray;
                 cursor: not-allowed;
@@ -61,7 +65,11 @@
             color: black;
             font-family: 'Poppins', sans-serif;
             border: none;
-            
+            @media (max-width: 767px) {
+                width: auto;
+                max-width: 120px;
+                padding: 0 20px;
+            }
             &:hover {
                 cursor: pointer;
                 -webkit-box-shadow: 10px 10px 8px -6px rgba(0, 0, 0, 0.75);
