@@ -85,6 +85,10 @@ export const optionsTableStudentPass = [
   {
     id:"uploadContract",
     label:"Cargar contrato"
+  },
+  {
+    id:"resetPassword",
+    label:"Reestablecer contraseña"
   }
 ]
 export const optionsTableStudentApprove = [

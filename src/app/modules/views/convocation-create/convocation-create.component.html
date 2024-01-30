@@ -1,5 +1,5 @@
 <section class="container">
-    <div *ngIf="!thereActiveConsultancy; else elseTemplate" class="content">
+    <div *ngIf="thereActiveConsultancy; else elseTemplate" class="content">
         <h2>Crear convocatoria</h2>
         <app-dinamic-form [formData]="createConvocation" (formSubmit)="onFormSubmit($event)"></app-dinamic-form>
     </div>

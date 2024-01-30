@@ -2,7 +2,7 @@ import { DialogService } from '../../../shared/services/dialog/dialog.service';
 import { QUALIFY_STUDENT, optionsTableStudentPass } from '../../metadata/convocation/convocation.metadata';
 import { AcademicFriendsService } from '../../services/academic-friends/academic-friends.service';
 import { Component } from '@angular/core';
-import { SEARCH_ACADEMIC_FRIEND, SEARCH_ACADEMIC_FRIEND_BY_EMAIL, UPLOAD_CONTRACT } from '../../metadata/academic-friend/academic-friend.metadata';
+import { RESET_PASSWORD, SEARCH_ACADEMIC_FRIEND, SEARCH_ACADEMIC_FRIEND_BY_EMAIL, UPLOAD_CONTRACT } from '../../metadata/academic-friend/academic-friend.metadata';
 import { ConsultancyService } from '../../services/consultancy/consultancy.service';
 import { TABLE_COLUMNS_NAME_CONSULTANCY } from '../../metadata/consultancy/consultancy.metadata';
 import { CoreService } from 'src/app/core/services/core/core.service';
@@ -63,9 +63,9 @@ export class AcademicFriendsComponent {
   getAcademicFriendByCode(code:number){
     this.academicFriendsService.findAcademicFriendByCode(code).subscribe({
       next:(res:any)=>{
-        if(res==null){
+        if(res==null || res.status!='pass'){
           this.findAFByCodetableData=[]
-          this.coreService.showMessage('No se encontró el amigo académico: '+code)
+          this.coreService.showMessage('No se encontró el amigo académico con código: '+code)
         }else{
           this.findAFByCodetableData=[]
           this.findAFByCodetableData.push(res);
@@ -94,6 +94,8 @@ export class AcademicFriendsComponent {
       this.downloadFileService(event.element.contract);
     } else if (event.id == 'uploadContract') {
       this.openDialogUploadContract(event);
+    } else if (event.id == 'resetPassword') {
+      this.openDialogResetPassword(event);
     }
   }
   downloadFileService(fileUrl: string) {
@@ -144,5 +146,31 @@ export class AcademicFriendsComponent {
           this.coreService.showMessage('Hubo un error al cargar el contrato:' + err.error.message);
         },
       });
+  }
+  openDialogResetPassword(event:any){
+    const formData = RESET_PASSWORD
+    this.dialogService.openDynamicDialog('Cambiar contraseña', formData)
+      .afterClosed()
+      .subscribe((res:any) => {
+        if(res == ''){
+          return
+        }
+         const objToResetPassword = {
+            email:event.element.email,
+            password:res.password,
+          }
+        this.resetPasswordService(objToResetPassword)
+      });
+  }
+
+  resetPasswordService(objToReset:any){
+    this.academicFriendsService.resetPassword(objToReset).subscribe({
+      next: (res:any) => {
+        this.coreService.showMessage("Contraseña actualizada con éxito")
+      },
+      error: (err:any) =>{
+        this.coreService.showMessage("Ocurrió un error al cambiar la contraseña")
+      }
+    })
   }
 }

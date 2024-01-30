@@ -155,7 +155,7 @@ describe('AcademicFriendsComponent', () => {
   it('should push the response to findAFByCodetableData array if it is not null', () => {
     // Arrange
     const code = 123;
-    const response = { name: 'John Doe' };
+    const response = { name: 'John Doe', status:'pass'};
     spyOn(academicFriendService, 'findAcademicFriendByCode').and.returnValue(
       of(response)
     );
