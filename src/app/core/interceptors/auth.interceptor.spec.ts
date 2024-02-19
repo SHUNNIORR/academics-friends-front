@@ -15,13 +15,16 @@ import {
   HttpClientTestingModule,
   HttpTestingController,
 } from '@angular/common/http/testing';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 describe('AuthInterceptor', () => {
+  const snackBarSpy = jasmine.createSpyObj('MatSnackBar', ['open']);
   let httpTestingController: HttpTestingController;
   let interceptor: AuthInterceptor;
   let authService: AuthService;
   let router: Router;
   let http: HttpClient;
+  let snackBar: jasmine.SpyObj<MatSnackBar>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -34,6 +37,7 @@ describe('AuthInterceptor', () => {
           useClass: AuthInterceptor,
           multi: true,
         },
+        { provide: MatSnackBar, useValue: snackBarSpy }
       ],
     });
     httpTestingController = TestBed.inject(HttpTestingController);
@@ -41,6 +45,7 @@ describe('AuthInterceptor', () => {
     authService = TestBed.inject(AuthService);
     router = TestBed.inject(Router);
     http = TestBed.inject(HttpClient);
+    snackBar = TestBed.inject(MatSnackBar) as jasmine.SpyObj<MatSnackBar>;
   });
 
   it('should be created', () => {
