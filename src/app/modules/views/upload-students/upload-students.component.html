@@ -2,6 +2,9 @@
     <div class="container__forms">
         <div class="container__forms__content">
             <h2>Cargar estudiantes</h2>
+            <div class="header-buttons">
+              <button mat-button class="download-button" (click)="dowloadFormat('template/students.xlsx')"><b>Descargar formato</b></button>
+            </div>
             <app-dinamic-form [formData]="uploadStudents" (formSubmit)="onFormSubmit($event)"></app-dinamic-form>
         </div>
         <div class="container__forms__content">

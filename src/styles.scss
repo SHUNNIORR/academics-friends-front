@@ -1,54 +1,72 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { display: flex; flex-direction: column;height:100% ;}
-body { margin: 0; font-family: 'Poppins', sans-serif; }
-.root{
-    height: 100%;
-    overflow: hidden;
+html,
+body {
+  display: flex;
+  flex-direction: column;
 }
+
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.root {
+  height: 100%;
+  overflow: hidden;
+}
+
 // .drawer-content-container :nth-child(2) {
 //     width: 100%;
 // }
 // app-home{
 //     width: 100%;
 //   }
-.mat-calendar-body-selected{
-    background-color: red;
-    color: white;
+.mat-calendar-body-selected {
+  background-color: red;
+  color: white;
 }
-.mat-datepicker-content{
-    background-color: white;
-    -webkit-box-shadow: 2px 2px 6px -2px rgba(0,0,0,0.75);
-    -moz-box-shadow: 2px 2px 6px -2px rgba(0,0,0,0.75);
-    box-shadow: 2px 2px 6px -2px rgba(0,0,0,0.75);
+
+.mat-datepicker-content {
+  background-color: white;
+  -webkit-box-shadow: 2px 2px 6px -2px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 2px 2px 6px -2px rgba(0, 0, 0, 0.75);
+  box-shadow: 2px 2px 6px -2px rgba(0, 0, 0, 0.75);
 }
-.mat-sort-header-arrow{
-    color: white;
+
+.mat-sort-header-arrow {
+  color: white;
 }
-.home{
-    @media (max-width: 767px) {
-        margin: 10px;
-        padding: 10px !important;
-        font-size: small;
-        h1,h3{
-            font-size: x-large !important;
-        }
+
+.home {
+  @media (max-width: 767px) {
+    margin: 10px;
+    padding: 10px !important;
+    font-size: small;
+
+    h1,
+    h3 {
+      font-size: x-large !important;
     }
+  }
 }
-.content{
-    @media (max-width: 767px) {
-        padding: 20px 10px !important;
-        margin: 10px;
-        width: auto;
-    }
+
+.content {
+  @media (max-width: 767px) {
+    padding: 20px 10px !important;
+    margin: 10px;
+    width: auto;
+  }
 }
-.container{
-    @media (max-width: 767px) {
-        width: 100vw;
-    }
+
+.container {
+  @media (max-width: 767px) {
+    width: 100vw;
+  }
 }
-h2{
-    @media (max-width: 767px) {
-        text-align: center;
-    }
+
+h2 {
+  @media (max-width: 767px) {
+    text-align: center;
+  }
 }

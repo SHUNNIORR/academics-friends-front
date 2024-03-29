@@ -26,7 +26,7 @@ export class ScheduleAssignmentComponent {
     this.afCalendarData = tuObjetoConDatos;
     this.assignCalendarData = tuObjetoConDatos;
   }
- 
+
   ngOnInit(){
     if(this.isCoordinator){
       this.getAllSchedule()
@@ -46,18 +46,18 @@ export class ScheduleAssignmentComponent {
   }
   saveScheduleService(schedule:any){
     this.scheduleService.saveSchedule(schedule).subscribe({
-      next:()=>{  
+      next:()=>{
         this.coreService.showMessage('Se asignó exitosamente el horario')
         this.getScheduleService();
       },
       error:(err:any)=>{
-        this.coreService.showMessage(''+err.error.message)
-      } 
+        this.coreService.showMessage(''+err.error.message);
+      }
     })
   }
   getScheduleService(){
     this.scheduleService.getAllSchedule().subscribe({
-      next:(res:any)=>{  
+      next:(res:any)=>{
         if(res.length==0){
           return this.coreService.showMessage('Aún no hay horarios disponibles')
         }
@@ -66,12 +66,12 @@ export class ScheduleAssignmentComponent {
       },
       error:(err:any)=>{
         this.coreService.showMessage('Sucedió un error al traer los horarios: '+err.error.message)
-      } 
+      }
     })
   }
   getScheduleByEmailService(email:string){
     this.scheduleService.getSchedulesByEmail(email).subscribe({
-      next:(res:any)=>{ 
+      next:(res:any)=>{
         if(res.length==0){
           return this.coreService.showMessage('Aún no tienes asignaciones de horario')
         }
@@ -79,7 +79,7 @@ export class ScheduleAssignmentComponent {
       },
       error:(err:any)=>{
         this.coreService.showMessage('Sucedió un error al traer los horarios: '+err.error.message)
-      } 
+      }
     })
   }
   handleCustomEvent(event:any){
@@ -125,7 +125,7 @@ export class ScheduleAssignmentComponent {
           academicFriendEmail: localStorage.getItem('email'),
           day: data.day,
           startHour: data.hourObject.hour,
-          endHour: `${endHour>9?'':'0'}${endHour}:00` 
+          endHour: `${endHour>9?'':'0'}${endHour}:00`
         }
         console.log('cancel',objToAssignAchedule)
         this.cancelScheduleService(objToAssignAchedule)
@@ -133,46 +133,48 @@ export class ScheduleAssignmentComponent {
   }
   assignmentScheduleService(replyObj:any){
     this.scheduleService.assignSchedule(replyObj).subscribe({
-      next:(res:any)=>{  
+      next:(res:any)=>{
         this.coreService.showMessage('Horario asignado con éxito')
         this.getScheduleByEmail()
         this.getAllSchedule();
       },
       error:(err:any)=>{
         this.coreService.showMessage('Sucedió un error asignando el horario: '+err.error.message)
-      } 
+        this.getScheduleByEmail()
+        this.getAllSchedule();
+      }
     })
   }
   cancelScheduleService(replyObj:any){
     this.scheduleService.cancelSchedule(replyObj).subscribe({
-      next:(res:any)=>{  
+      next:(res:any)=>{
         this.coreService.showMessage('Horario cancelado con éxito')
         this.getScheduleByEmail()
         this.getAllSchedule();
       },
       error:(err:any)=>{
         this.coreService.showMessage('Sucedió un error cancelando el horario: '+err.error.message)
-      } 
+      }
     })
   }
   addOneHour(startTime:string) {
     // Split the time into hours and minutes
     const [hours, minutes] = startTime.split(":").map(Number);
-  
+
     // Add one hour
     const newHour = hours + 1;
-  
+
     // Format the new hour as a string and ensure it has two digits
     const formattedHour = newHour.toString().padStart(2, "0");
-  
+
     // Format the minutes as a string and ensure it has two digits
     const formattedMinutes = minutes.toString().padStart(2, "0");
-  
+
     // Create the object with the new hour
     const result = {
       endHour: `${formattedHour}:${formattedMinutes}`,
     };
-  
+
     return result;
   }
 

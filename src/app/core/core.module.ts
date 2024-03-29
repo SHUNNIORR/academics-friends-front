@@ -17,11 +17,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { SharedModule } from '../shared/shared.module';
 import { RouterModule } from '@angular/router';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 @NgModule({
   declarations: [
     SidebarComponent,
     HeaderComponent,
-    LoginComponent
+    LoginComponent,
+    ForgotPasswordComponent
   ],
   exports:[
     SidebarComponent,

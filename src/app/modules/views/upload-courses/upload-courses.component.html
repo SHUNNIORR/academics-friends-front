@@ -1,6 +1,9 @@
 <section class="container">
     <div class="content">
         <h2>Cargar cursos</h2>
+        <div class="header-buttons">
+          <button mat-button class="download-button" (click)="dowloadFormat('template/courses.xlsx')"><b>Descargar formato</b></button>
+        </div>
         <app-dinamic-form [formData]="formConfig" (formSubmit)="onFormSubmit($event)"></app-dinamic-form>
     </div>
 </section>

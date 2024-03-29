@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 export class AuthService {
   isAuthenticated: boolean = true;// Obtén el valor desde localStorage o establece un valor predeterminado
   readonly API_URL: string = environment.url
-  constructor(private http:HttpClient) { 
+  constructor(private http:HttpClient) {
   }
 
   login(userData: LoginUser): Observable<LoginUserResponse>{
@@ -40,6 +40,14 @@ export class AuthService {
 
   getUserByEmail(email: string){
     return this.http.get(`${this.API_URL}/user/${email}`)
+  }
+
+  forgotPassword(forgotPasswordObj: string){
+    return this.http.post(`${this.API_URL}/security/forgot-password`,forgotPasswordObj)
+  }
+
+  resetPassword(resetPasswordObj: any){
+    return this.http.post(`${this.API_URL}/security/reset-password`,resetPasswordObj);
   }
 
   hasPermission(permissions: string[]):boolean{

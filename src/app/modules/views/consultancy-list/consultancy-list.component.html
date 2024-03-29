@@ -2,6 +2,7 @@
     <div class="content">
         <h2>Mis asesorías</h2>
         <div class="header-buttons">
+            <button mat-button class="download-button" (click)="dowloadContract()"><b>Descargar contrato</b></button>
             <button mat-button class="download-button" (click)="downloadConsultancies(tableData, 'AsesoriasAFUFPS')"><b>Descargar asesorias</b></button>
         </div>
         <app-dinamic-table style="width: 100%;" *ngIf="tableData.length>0;else elseBlock" [data]="tableData" [columnsConfig]="columnNames"></app-dinamic-table>

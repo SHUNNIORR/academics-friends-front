@@ -5,6 +5,9 @@ import { EnrollmentService } from '../../services/enrollment/enrollment.service'
 import { CoreService } from 'src/app/core/services/core/core.service';
 import { EnrollStudentRequest } from '../../models/Student';
 import { ConvocationService } from '../../services/convocation/convocation.service';
+import { Schedule } from '../../models/Schedule';
+import { tuObjetoConDatos } from '../../metadata/schedule-assignment/shedule-assignment';
+import { ScheduleService } from '../../services/schedule/schedule.service';
 
 @Component({
   selector: 'app-enrollment-academic-friend',
@@ -14,11 +17,13 @@ import { ConvocationService } from '../../services/convocation/convocation.servi
 export class EnrollmentAcademicFriendComponent {
   formConfig: DynamicFormData = ENROLLMENT
   thereActiveConsultancy: boolean = false;
-  constructor(private enrollmentService:EnrollmentService, private convocationService:ConvocationService, private coreService:CoreService){
-
+  assignCalendarData:Schedule;
+  constructor(private enrollmentService:EnrollmentService,private scheduleService:ScheduleService, private convocationService:ConvocationService, private coreService:CoreService){
+    this.assignCalendarData = tuObjetoConDatos;
   }
   ngAfterViewInit() {
     this.getConvocationActiveService();
+    this.getScheduleService()
   }
   getConvocationActiveService() {
     this.convocationService.getConvocationActive().subscribe({
@@ -43,6 +48,21 @@ export class EnrollmentAcademicFriendComponent {
       },
       error:(err:any)=>{
         this.coreService.showMessage(`Error al inscribirse: ${err.error.message}`)
+      }
+    })
+  }
+
+  getScheduleService(){
+    this.scheduleService.getAllSchedule().subscribe({
+      next:(res:any)=>{
+        if(res.length==0){
+          return this.coreService.showMessage('Aún no hay horarios disponibles')
+        }
+        this.assignCalendarData=res;
+
+      },
+      error:(err:any)=>{
+        this.coreService.showMessage('Sucedió un error al traer los horarios: '+err.error.message)
       }
     })
   }

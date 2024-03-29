@@ -5,10 +5,14 @@
     align-items: center;
     gap: 10px;
 }
+.forgo-pass{
+  padding: 10px;
+  color: $red;
+}
 
 .container {
     width: 100%;
-    height: 100%;
+    height: 100vh;
     display: flex;
     justify-content: space-between;
 

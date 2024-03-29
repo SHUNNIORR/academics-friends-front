@@ -20,11 +20,13 @@ import { ConvocationApprovalsComponent } from './modules/views/convocation-appro
 import { StatsComponent } from './modules/views/stats/stats.component';
 import { ScheduleAssignmentComponent } from './modules/views/schedule-assignment/schedule-assignment.component';
 import { ProfileComponent } from './modules/views/profile/profile.component';
+import { ForgotPasswordComponent } from './core/auth/forgot-password/forgot-password.component';
 
 const routes: Routes = [
   { path:'', redirectTo:'/login', pathMatch:'full'},
   { path:'inscripcion', component: EnrollmentAcademicFriendComponent},
   { path:'login', component: LoginComponent,  },
+  { path:'forgot-password', component: ForgotPasswordComponent,  },
   { path:'dashboard', component: MainComponent, canActivate:[],
     children: [
       { path: '', redirectTo: 'bienvenidos', pathMatch: 'full' },

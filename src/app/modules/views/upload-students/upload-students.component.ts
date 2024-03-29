@@ -1,3 +1,4 @@
+import { FileService } from './../../services/file/file.service';
 import { Component } from '@angular/core';
 import { SEARCH_STUDENTS, UPLOAD_STUDENTS } from '../../metadata/upload-students/upload-students.metadata';
 import { CoursesService } from '../../services/courses/courses.service';
@@ -16,7 +17,8 @@ export class UploadStudentsComponent {
   studentInfo: StudentInfo | null = null;
   constructor(
     private studentsService: StudentsService,
-    private coreService: CoreService
+    private coreService: CoreService,
+    private fileService:FileService
   ) {}
   onFormSubmit(formData: any): void {
     this.createStudents(formData.file);
@@ -50,5 +52,25 @@ export class UploadStudentsComponent {
         );
       },
     });
+  }
+  dowloadFormat(fileUrl:string){
+    this.fileService.downloadFile(fileUrl).subscribe({
+      next:blob => {
+        const file = new Blob([blob], { type: 'application/octet-stream' });
+
+        // Crear un enlace temporal y simular un clic para descargar el archivo
+        const url = window.URL.createObjectURL(file);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${fileUrl}`; // Puedes establecer el nombre del archivo aquí
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        this.coreService.showMessage("Archivo descargado con éxito")
+      },
+      error:(err:any)=>{
+        this.coreService.showMessage('Hubo un error descargando el archivo:'+ err.message);
+      }
+    })
   }
 }
