@@ -217,3 +217,15 @@ Este proyecto está licenciado bajo la Licencia MIT. Consulta el archivo LICENSE
 
 Si tienes alguna pregunta o comentario sobre el proyecto, puedes contactarme a través de mi correo electrónico.
 
+## Despliegue con docker ##
+
+creamos la imagen docker:
+```
+  docker build -t academicfriendsfront .
+```
+
+ejecutamos la imagen con el puerto 80:80 y el nombre de la imagen (academicfriendsfront)
+
+```
+  docker run -d -it -p 80:80 academicfriendsfront
+```
