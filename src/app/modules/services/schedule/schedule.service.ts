@@ -6,8 +6,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ScheduleService {
-  readonly API_URL: string = environment.url
-  constructor(private http:HttpClient) { 
+  readonly API_URL = environment.url
+  constructor(private http:HttpClient) {
 
   }
 

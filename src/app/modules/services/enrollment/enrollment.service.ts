@@ -7,8 +7,8 @@ import { EnrollStudentRequest } from '../../models/Student';
   providedIn: 'root'
 })
 export class EnrollmentService {
-  readonly API_URL: string = environment.url
-  constructor(private http:HttpClient) { 
+  readonly API_URL = environment.url
+  constructor(private http:HttpClient) {
 
   }
   enrollStudent(students:EnrollStudentRequest){

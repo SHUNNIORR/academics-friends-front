@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class AuthService {
   isAuthenticated: boolean = true;// Obtén el valor desde localStorage o establece un valor predeterminado
-  readonly API_URL: string = environment.url
+  readonly API_URL = environment.url
   constructor(private http:HttpClient) {
   }
 

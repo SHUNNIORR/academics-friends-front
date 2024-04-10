@@ -8,8 +8,8 @@ import { CreateCoordinatorRequest, CreateCoordinatorResponse } from '../../model
   providedIn: 'root'
 })
 export class CoordinatorService {
-  readonly API_URL: string = environment.url
-  constructor(private http:HttpClient) { 
+  readonly API_URL = environment.url
+  constructor(private http:HttpClient) {
 
   }
 

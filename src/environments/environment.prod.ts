@@ -1,4 +1,5 @@
 export const environment = {
-    production: true,
-    url: 'http://18.204.15.214:8080/ufps/academic-friends-api',
-  };
+  production: true,
+  url:
+    window['env' as any]['ApiUrl' as any] || 'http://localhost:5010/api/hero',
+};

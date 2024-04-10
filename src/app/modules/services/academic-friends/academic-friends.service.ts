@@ -6,8 +6,8 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AcademicFriendsService {
-  readonly API_URL: string = environment.url
-  constructor(private http:HttpClient) { 
+  readonly API_URL = environment.url
+  constructor(private http:HttpClient) {
   }
   getAllAcademicFriends(){
     return this.http.get(`${this.API_URL}/academic-friend`)
@@ -21,7 +21,7 @@ export class AcademicFriendsService {
 
   updateAcademicFriend(academicFriendObj:any){
     return this.http.put(`${this.API_URL}/academic-friend`,academicFriendObj)
-  } 
+  }
 
   findAcademicFriendByCode(academicFriendCode:number){
     return this.http.get(`${this.API_URL}/academic-friend/${academicFriendCode}`)

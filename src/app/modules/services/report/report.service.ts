@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ReportService {
-  readonly API_URL: string = environment.url
+  readonly API_URL = environment.url
   private reportUpdated$ = new Subject<void>();
 
 
@@ -19,11 +19,11 @@ export class ReportService {
 
   getAllReports(){
     return this.http.get(`${this.API_URL}/report`)
-  } 
+  }
 
   getReportsByAcademicFriend(academicFriendEmail:string){
     return this.http.get(`${this.API_URL}/report/find-by-academic-friend/${academicFriendEmail}`)
-  } 
+  }
   updateReport(reportObj:any){
     return this.http.put(`${this.API_URL}/report`,reportObj).pipe(
       // Emitir una notificación de actualización cuando se completa la corrección del informe

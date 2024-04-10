@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ConsultancyService {
-  readonly API_URL: string = environment.url
-  constructor(private http:HttpClient) { 
+  readonly API_URL = environment.url
+  constructor(private http:HttpClient) {
 
   }
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './core/services/auth/auth.service';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -24,5 +25,6 @@ export class AppComponent {
         console.log(err);
       },
     });
+    console.log('url proddd',environment.url)
   }
 }

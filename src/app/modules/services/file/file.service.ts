@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class FileService {
-  readonly API_URL: string = environment.url
+  readonly API_URL = environment.url
   constructor(private http:HttpClient) { }
 
   downloadFile(fileUrl: string){

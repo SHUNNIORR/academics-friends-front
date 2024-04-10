@@ -227,5 +227,11 @@ creamos la imagen docker:
 ejecutamos la imagen con el puerto 80:80 y el nombre de la imagen (academicfriendsfront)
 
 ```
-  docker run -d -it -p 80:80 academicfriendsfront
+  docker run -d -it -p 80:80 -e API_URL={VARIABLE DE ENTORNO HOST DEL APLICATIVO} academicfriendsfront
 ```
+
+Importante: la url del host debe tener esta estructura:
+
+https://{HOST}/ufps/academic-friends-api
+
+SOLO DEBE CAMBIAR {HOST} para que funcione bien el aplicativo
