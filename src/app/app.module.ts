@@ -12,6 +12,7 @@ import { LayoutsModule } from './layouts/layouts.module';
 import { AppModulesModule } from './modules/app-modules.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
       useClass: AuthInterceptor,
       multi: true,
     },
+    {provide: APP_BASE_HREF, useValue: '/academic-friends'}
   ],
   bootstrap: [AppComponent]
 })
