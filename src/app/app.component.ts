@@ -25,6 +25,5 @@ export class AppComponent {
         console.log(err);
       },
     });
-    console.log('url proddd',environment.url)
   }
 }
