@@ -10,7 +10,7 @@
           <div *ngIf="authService.hasPermission(item.permisses)">
             <mat-expansion-panel  *ngIf="item.type=='multi'" [class.mat-elevation-z0]="true">
               <mat-expansion-panel-header ><mat-icon class="mat-icon">{{item.icon}}</mat-icon> {{item.moduleName}} </mat-expansion-panel-header>
-              
+
               <mat-nav-list>
                 <div *ngFor="let view of item.views">
                   <a mat-list-item [routerLink]="view.link"  routerLinkActive="active-link" >{{view.viewName}}</a>
@@ -20,11 +20,11 @@
             <a *ngIf="item.type=='simple'" mat-list-item [routerLink]="item.link"  routerLinkActive="active-link" ><mat-icon class="mat-icon">{{item.icon}}</mat-icon>{{item.moduleName}}</a>
           </div>
       </div>
-      
+
     </mat-nav-list>
     <div class="credits-container">
       <p>Desarrollado por</p>
-      <img src="../../../assets/logo_ufps.png" width="50" height="50" alt="">
+      <img src="assets/logo_ufps.png" width="50" height="50" alt="">
     </div>
   </mat-drawer>
   <mat-drawer-content class="drawer-content-container">

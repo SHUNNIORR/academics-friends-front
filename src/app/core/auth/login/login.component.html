@@ -1,15 +1,15 @@
 <section class="container">
     <div class="container__form" [style]="esDispositivoMovil?'width:100%':''">
-        <img src="../../../../assets/logo_red.svg" width="100" height="100">
+        <img src="assets/logo_red.svg" width="100" height="100">
         <h1>Ingresa a Amigos académicos IS</h1>
         <app-dinamic-form [formData]="formConfig" (formSubmit)="onFormSubmit($event)"></app-dinamic-form>
         <!-- <a class="forgo-pass" routerLink="/forgot-password">¿Haz olvidado tu contraseña?</a> -->
     </div>
     <div *ngIf="!esDispositivoMovil" class="container__presentation">
         <div class="logos-container">
-            <img src="../../../../assets/logo.svg" width="150" >
+            <img src="assets/logo.svg" width="150" >
             <h2>X</h2>
-            <img  src="../../../../assets/logo_is_blanco.png" width="150">
+            <img  src="assets/logo_is_blanco.png" width="150">
         </div>
         <p class="container__presentation__title">PORTAL DE <BR>AMIGOS ACADÉMICOS IS</p>
         <p class="container__presentation__description">

@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "baseHref": "/amigos-academicos-front/",
             "outputPath": "dist/amigos-academicos-front",
             "index": "src/index.html",
             "main": "src/main.ts",

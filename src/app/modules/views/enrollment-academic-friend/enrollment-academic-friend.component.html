@@ -1,6 +1,6 @@
 <section class="container">
   <div *ngIf="thereActiveConsultancy; else elseTemplate" class="content">
-    <img src="../../../assets/logo_red.svg" width="100" height="100" alt="Logo amigos académicos" />
+    <img src="assets/logo_red.svg" width="100" height="100" alt="Logo amigos académicos" />
     <h2>Inscríbete a amigos académicos</h2>
     <app-dinamic-form [formData]="formConfig" (formSubmit)="onFormSubmit($event)"></app-dinamic-form>
   </div>

@@ -36,7 +36,6 @@ import { APP_BASE_HREF } from '@angular/common';
       useClass: AuthInterceptor,
       multi: true,
     },
-    {provide: APP_BASE_HREF, useValue: '/academic-friends'}
   ],
   bootstrap: [AppComponent]
 })
